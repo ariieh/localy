@@ -10,6 +10,7 @@
 	<div id="page-modal">
 		<div class="modal-text">
 			Name. Plz?
+			<input id="name-input" type="text"></input>
 		</div>
 	</div>
 	
@@ -19,9 +20,16 @@
 	<script src="/lib/geolocation.js"></script>
 	
 	<script>
-	  Locator.getLocation();
+	var name;
+	$("#name-input").keyup(function(event){
+	    if(event.keyCode == 13){
+			name = $("#name-input").val();
+	  	    Locator.getLocation(name);
+		    $("#page-modal").fadeOut("slow");
+	    }
+	});
 	
-	  var socket = io();
+	var socket = io();
 	</script>
 	
   </body>
