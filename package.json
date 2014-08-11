@@ -1,0 +1,9 @@
+{
+  "name": "murdr",
+  "version": "0.0.1",
+  "description": "murdr",
+  "dependencies": {
+    "express": "^4.8.2",
+    "socket.io": "^1.0.6"
+  }
+}
