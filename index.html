@@ -1,31 +1,22 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
-    <style>
-    </style>
+    <title>Murdr</title>
+    <link rel="stylesheet" href="stylesheets/custom.css" />
+    <link rel="stylesheet" href="stylesheets/leaflet.css" />
   </head>
   <body>
 	<div id="map"></div>
 	
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/vendor/jquery.js"></script>
+	<script src="/vendor/leaflet.js"></script>
+	<script src="/lib/geolocation.js"></script>
 	
 	<script>
-	  // Locator.getLocation();
+	  Locator.getLocation();
 	
 	  var socket = io();
-	  
-	  $('form').submit(function(){
-	    socket.emit('chat message', $('#m').val());
-	    $('#m').val('');
-	    return false;
-	  });
-	  
-	  socket.on('chat message', function(msg){
-	    $('#messages').append($('<li>').text(msg));
-	  });
-	  
 	</script>
 	
   </body>

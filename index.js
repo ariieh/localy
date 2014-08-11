@@ -5,21 +5,20 @@ var io = require('socket.io')(http);
 
 /* Router */
 //Root
-app.get('/', function(req, res){
-  res.sendfile('index.html');
-});
+app.get('/', function(req, res){ res.sendfile('index.html'); });
 
 //Vendor
-app.get('/vendor/jquery.js', function(req, res){ res.sendfile('vendor/jquery.js'); });
+app.get('/vendor/:file', function(req, res){ res.sendfile('vendor/' + req.params.file); });
+app.get('/vendor/images/:image', function(req, res){ res.sendfile('vendor/images/' + req.params.image); });
 
 //JavaScript library
-app.get('/lib/geolocation.js', function(req, res){ res.sendfile('lib/geolocation.js'); });
+app.get('/lib/:file', function(req, res){ res.sendfile('lib/' + req.params.file); });
+
+//Stylesheets
+app.get('/stylesheets/:file', function(req, res){ res.sendfile('stylesheets/' + req.params.file); });
 
 /* IO connections */
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
 });
 
 /* Server */
