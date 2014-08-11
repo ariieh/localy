@@ -19,6 +19,9 @@ app.get('/stylesheets/:file', function(req, res){ res.sendfile('stylesheets/' + 
 
 /* IO connections */
 io.on('connection', function(socket){
+    socket.on('refresh map', function(coords){
+      console.log(coords);
+    });
 });
 
 /* Server */
