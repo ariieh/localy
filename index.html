@@ -20,7 +20,10 @@
 	<script src="/lib/geolocation.js"></script>
 	
 	<script>
+	var socket = io();
 	var name;
+	var map;
+	
 	$("#name-input").keyup(function(event){
 	    if(event.keyCode == 13){
 			name = $("#name-input").val();
@@ -29,7 +32,12 @@
 	    }
 	});
 	
-	var socket = io();
+    socket.on('refresh map', function(coords, name){
+		console.log(coords, name)
+		L.marker([coords[0], coords[1]]).addTo(map)
+		    .bindPopup(name)
+		    .openPopup();
+    });
 	</script>
 	
   </body>
