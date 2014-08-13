@@ -50,6 +50,7 @@
 	});
 	
     socket.on('load marker', Locator.loadMarker);
+    socket.on('delete marker', Locator.deleteMarker);
 	
     socket.on('user count', function(size){
 		$("span#user-count").html("Users: " + size);
