@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="stylesheets/leaflet.css" />
   </head>
   <body>
+  	<span id="user-count"></span>
+	  
 	<div id="map"></div>
 	<div id="page-modal">
 		<div class="modal-text">
@@ -46,6 +48,10 @@
 	});
 	
     socket.on('load marker', Locator.loadMarker);
+	
+    socket.on('user count', function(size){
+		$("span#user-count").html("Users: " + size);
+    });
 	</script>
 	
   </body>
