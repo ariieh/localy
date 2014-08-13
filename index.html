@@ -23,24 +23,30 @@
 	var socket = io();
 	var map, name;
 	var markers = {};
-	var userId = Math.floor(10000000000 + Math.random() * 90000000000);
+	var userID = socket.io.engine.id;
 	
+	/* Page listeners */
 	$("#name-input").keyup(function(event){
 	    if(event.keyCode == 13){
 			name = $("#name-input").val();
-	  	    Locator.getLocation(name, userId);
+	  	    Locator.getLocation(name, userID);
 		    $("#page-modal").fadeOut("slow");
 	    }
 	});
 	
-    socket.on('refresh map', function(coords, name, userID){
-		if (markers[userID]){
-			markers[userID].setLatLng([coords[0], coords[1]]).update();
-		} else {
-			markers[userID] = L.marker([coords[0], coords[1]]);
-			markers[userID].addTo(map).bindPopup(name).openPopup();
-		}
-    });
+	/* Socket listeners */
+	socket.on('load map', function(serverMarkerData){
+		Object.keys(serverMarkerData).forEach(function(id){
+			if (id !== userID){
+				var coords = serverMarkerData[id][0];
+				var name = serverMarkerData[id][1];
+				
+				
+			}
+		})
+	});
+	
+    socket.on('load marker', Locator.loadMarker);
 	</script>
 	
   </body>
