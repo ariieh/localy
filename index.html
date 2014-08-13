@@ -21,22 +21,25 @@
 	
 	<script>
 	var socket = io();
-	var name;
-	var map;
+	var map, name;
+	var markers = {};
+	var userId = Math.floor(10000000000 + Math.random() * 90000000000);
 	
 	$("#name-input").keyup(function(event){
 	    if(event.keyCode == 13){
 			name = $("#name-input").val();
-	  	    Locator.getLocation(name);
+	  	    Locator.getLocation(name, userId);
 		    $("#page-modal").fadeOut("slow");
 	    }
 	});
 	
-    socket.on('refresh map', function(coords, name){
-		console.log(coords, name)
-		L.marker([coords[0], coords[1]]).addTo(map)
-		    .bindPopup(name)
-		    .openPopup();
+    socket.on('refresh map', function(coords, name, userID){
+		if (markers[userID]){
+			markers[userID].setLatLng([coords[0], coords[1]]).update();
+		} else {
+			markers[userID] = L.marker([coords[0], coords[1]]);
+			markers[userID].addTo(map).bindPopup(name).openPopup();
+		}
     });
 	</script>
 	
