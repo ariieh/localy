@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="stylesheets/leaflet.css" />
   </head>
   <body>
-  	<span id="user-count"></span>
+	<div id="legend-box">
+	  	<span id="user-count"></span>
+	</div>
 	  
 	<div id="map"></div>
 	<div id="page-modal">
@@ -34,7 +36,7 @@
 		    $("#page-modal").fadeOut("slow");
 	    }
 	});
-	
+		
 	/* Socket listeners */
 	socket.on('load map', function(serverMarkerData){
 		Object.keys(serverMarkerData).forEach(function(userID){

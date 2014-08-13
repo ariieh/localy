@@ -13,6 +13,7 @@ var serverMarkerData = {};
 	//Vendor
 	app.get('/vendor/:file', function(req, res){ res.sendfile('vendor/' + req.params.file); });
 	app.get('/vendor/images/:image', function(req, res){ res.sendfile('vendor/images/' + req.params.image); });
+	app.get('/stylesheets/images/:image', function(req, res){ res.sendfile('vendor/images/' + req.params.image); });
 
 	//JavaScript library
 	app.get('/lib/:file', function(req, res){ res.sendfile('lib/' + req.params.file); });
