@@ -1,7 +1,7 @@
 {
-  "name": "murdr",
+  "name": "moider",
   "version": "0.0.1",
-  "description": "murdr",
+  "description": "moider",
   "dependencies": {
     "express": "^4.8.2",
     "socket.io": "^1.0.6"
