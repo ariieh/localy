@@ -404,7 +404,9 @@
 	padding: 1px;
 	text-align: left;
 	border-radius: 0px;
-	}
+	overflow: auto;
+	max-height: 100px;
+}
 .leaflet-popup-content {
 	color: white;
 	font-weight: lighter;
@@ -444,7 +446,7 @@
 .leaflet-container a.leaflet-popup-close-button {
 	position: absolute;
 	top: 0;
-	right: 0;
+	left: 0;
 	padding: 4px 4px 0 0;
 	text-align: center;
 	width: 18px;
