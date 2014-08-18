@@ -11,6 +11,7 @@
 	</div>
 	  
 	<div id="map"></div>
+	
 	<div id="page-modal">
 		<div class="modal-text">
 			Name. Plz?
@@ -18,44 +19,16 @@
 		</div>
 	</div>
 	
+	<form id="chat-form">
+		<input type="text" id="chat-input" autocomplete="off"></input>
+		<button id="send-chat-message">Send</button>
+	</form>
+	
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/vendor/jquery.js"></script>
 	<script src="/vendor/leaflet.js"></script>
+	
 	<script src="/lib/geolocation.js"></script>
-	
-	<script>
-	var socket = io();
-	var map, name;
-	var markers = {};
-	
-	/* Page listeners */
-	$("#name-input").keyup(function(event){
-	    if(event.keyCode == 13){
-			name = $("#name-input").val();
-	  	    Locator.getLocation(name);
-		    $("#page-modal").fadeOut("slow");
-	    }
-	});
-		
-	/* Socket listeners */
-	socket.on('load map', function(serverMarkerData){
-		Object.keys(serverMarkerData).forEach(function(userID){
-			if (userID !== socket.io.engine.id){
-				var coords = serverMarkerData[userID][0];
-				var name = serverMarkerData[userID][1];
-				
-				Locator.loadMarker(coords, name, userID);
-			}
-		})
-	});
-	
-    socket.on('load marker', Locator.loadMarker);
-    socket.on('delete marker', Locator.deleteMarker);
-	
-    socket.on('user count', function(size){
-		$("span#user-count").html("Users: " + size);
-    });
-	</script>
-	
+	<script src="/lib/murdr.js"></script>
   </body>
 </html>
