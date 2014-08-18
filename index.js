@@ -41,8 +41,8 @@ var serverMarkerData = {};
 	    io.emit('delete marker', socket.id);
 		});
 		
-		socket.on('chat message', function(msg, id){
-			
+		socket.on('chat message', function(msg, userID){
+			io.emit('chat message', msg, userID);
 		});
 		
 	});
