@@ -37,6 +37,7 @@ var serverMarkerData = {};
 		
 		socket.on('disconnect', function(){
 			size -= 1;
+			delete serverMarkerData[socket.id];
 			io.emit('user count', size);
 	    io.emit('delete marker', socket.id);
 		});
