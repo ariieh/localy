@@ -31,7 +31,7 @@ var serverMarkerData = {};
 		});
 	
 	  socket.on('load marker', function(coords, name, userID){
-			serverMarkerData[userID] = {"coords":coords, "name":name};
+			serverMarkerData[userID] = {coords:coords, name:name};
 	    io.emit('load marker', coords, name, userID);
 	  });
 		
