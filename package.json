@@ -1,7 +1,7 @@
 {
-  "name": "moider",
+  "name": "localy",
   "version": "0.0.1",
-  "description": "moider",
+  "description": "localy",
   "dependencies": {
     "express": "^4.8.2",
     "socket.io": "^1.0.6"
