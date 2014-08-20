@@ -27,11 +27,11 @@ var serverMarkerData = {};
 		socket.on('load map', function(userID){
 	    io.to(userID).emit('load map', serverMarkerData);
 			size += 1;
-			io.emit('user count', size)
+			io.emit('user count', size);
 		});
 	
 	  socket.on('load marker', function(coords, name, userID){
-			serverMarkerData[userID] = [coords, name];
+			serverMarkerData[userID] = {"coords":coords, "name":name};
 	    io.emit('load marker', coords, name, userID);
 	  });
 		
