@@ -36,8 +36,9 @@ var serverMarkerData = {};
 			io.emit('user count', size);
 		});
 	
-	  socket.on('load marker', function(coords, name, userID){
+	  socket.on('load marker', function(coords, name, userID, placeName){
 			serverMarkerData[userID] = {coords:coords, name:name};
+			socket.join(placeName);
 	    io.emit('load marker', coords, name, userID);
 	  });
 		
@@ -48,8 +49,8 @@ var serverMarkerData = {};
 	    io.emit('delete marker', socket.id);
 		});
 		
-		socket.on('chat message', function(msg, userID){
-			io.emit('chat message', msg, userID);
+		socket.on('chat message', function(msg, userID, placeName){
+			io.sockets.in(placeName).emit('chat message', msg, userID);
 		});
 		
 	});
