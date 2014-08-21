@@ -4,8 +4,8 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var size = 0;
 
+var size = 0;
 var serverMarkerData = {};
 
 /* Router */
@@ -31,8 +31,9 @@ var serverMarkerData = {};
 	io.on('connection', function(socket){
 		
 		socket.on('load map', function(userID){
-	    io.to(userID).emit('load map', serverMarkerData);
 			size += 1;
+			
+	    io.to(userID).emit('load map', serverMarkerData);
 			io.emit('user count', size);
 		});
 	
@@ -44,6 +45,7 @@ var serverMarkerData = {};
 		
 		socket.on('disconnect', function(){
 			size -= 1;
+			
 			delete serverMarkerData[socket.id];
 			io.emit('user count', size);
 	    io.emit('delete marker', socket.id);
