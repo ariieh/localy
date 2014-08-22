@@ -37,10 +37,10 @@ var serverMarkerData = {};
 			io.emit('user count', size);
 		});
 	
-	  socket.on('load marker', function(coords, name, userID, placeName){
-			serverMarkerData[userID] = {coords:coords, name:name, rooms: [placeName]};
+	  socket.on('load marker', function(position, name, userID, placeName){
+			serverMarkerData[userID] = {coords: {lat: position[0], lon: position[1]}, name: name, rooms: [placeName]};
 			socket.join(placeName);
-	    io.emit('load marker', coords, name, userID);
+	    io.emit('load marker', serverMarkerData[userID].coords, name, userID);
 	  });
 		
 		socket.on('chat message', function(msg, userID){
