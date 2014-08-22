@@ -1717,7 +1717,6 @@ L.MarkerCluster.include({
 		}
 
 		this._animationSpiderfy(childMarkers, positions);
-		console.log(childMarkers);
 	},
 
 	unspiderfy: function (zoomDetails) {

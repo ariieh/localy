@@ -38,11 +38,17 @@ var serverMarkerData = {};
 		});
 	
 	  socket.on('load marker', function(coords, name, userID, placeName){
-			serverMarkerData[userID] = {coords:coords, name:name};
+			serverMarkerData[userID] = {coords:coords, name:name, rooms: [placeName]};
 			socket.join(placeName);
 	    io.emit('load marker', coords, name, userID);
 	  });
 		
+		socket.on('chat message', function(msg, userID){
+			for (var i = 0; i < serverMarkerData[userID].rooms.length; i++){
+				io.sockets.in(serverMarkerData[userID].rooms[i]).emit('chat message', msg, userID);				
+			}
+		});
+				
 		socket.on('disconnect', function(){
 			size -= 1;
 			
@@ -50,11 +56,7 @@ var serverMarkerData = {};
 			io.emit('user count', size);
 	    io.emit('delete marker', socket.id);
 		});
-		
-		socket.on('chat message', function(msg, userID, placeName){
-			io.sockets.in(placeName).emit('chat message', msg, userID);
-		});
-		
+				
 	});
 	
 /* Server */
