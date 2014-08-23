@@ -5,19 +5,8 @@ var knex = require('knex')({
     adapter : 'postgresql',
 		encoding : 'unicode',
 		pool : '5',
-    database : 'Localy_dev'
+    database : 'localy_development'
   }
-});
-
-knex.schema.createTable('users', function (table) {
-  table.increments();
-  table.integer('userID');
-	table.decimal('latitude');
-	table.decimal('longitude');
-	
-	table.index('latitude');
-	table.index('longitude');
-  table.timestamps();
 });
 
 /* Initialize Bookshelf */
