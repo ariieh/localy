@@ -1,10 +1,16 @@
 'use strict';
 
+/* Initialize server and sockets */
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+/* DB */
+var DB = require('./db.js');
+app.set('bookshelf', DB.bookshelf);
+
+/* Data */
 var size = 0;
 var serverMarkerData = {};
 
