@@ -44,22 +44,37 @@ var serverMarkerData = {};
 		});
 	
 	  socket.on('load marker', function(position, name, userID, placeName){
-			new DB.user({
-				userID: userID,
+			new DB.User({
+				socket_id: userID,
 				name: name,
 				latitude: position[0],
 				longitude: position[1]
-			}).save();
+			}).save().then(function(user){
+				new DB.Room({
+					name: placeName
+				}).save().then(function(room){
+					new DB.RoomJoin({
+						user_id: user.id,
+						room_id: room.id
+					}).save();
+				});
+			});
 			
-			serverMarkerData[userID] = {coords: {lat: position[0], lon: position[1]}, name: name, rooms: [placeName]};			
 			socket.join(placeName);
-	    io.emit('load marker', serverMarkerData[userID].coords, name, userID);
+	    io.emit('load marker', {lat: position[0], lon: position[1]}, name, userID);
 	  });
 		
 		socket.on('chat message', function(msg, userID){
-			for (var i = 0; i < serverMarkerData[userID].rooms.length; i++){
-				io.sockets.in(serverMarkerData[userID].rooms[i]).emit('chat message', msg, userID);				
-			}
+			users
+			  .query('where', 'socket_id', '=', userID)
+			  .fetch()
+			  .then(function(collection) {
+					console.log(collection);
+			  });
+			
+			// for (var i = 0; i < serverMarkerData[userID].rooms.length; i++){
+			// 	io.sockets.in(serverMarkerData[userID].rooms[i]).emit('chat message', msg, userID);
+			// }
 		});
 				
 		socket.on('disconnect', function(){

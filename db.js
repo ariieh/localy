@@ -12,7 +12,27 @@ var knex = require('knex')({
 /* Initialize Bookshelf */
 exports.bookshelf = require('bookshelf')(knex);
 
-/* Initialize User model */
+/* User model */
 exports.User = exports.bookshelf.Model.extend({
-  tableName: 'users'
+  tableName: 'users',
+  rooms: function() {
+    return this.belongsToMany(Room);
+  }
+});
+
+exports.Users = exports.bookshelf.Collection.extend({
+  model: exports.User
+});
+
+/* Room model */
+exports.Room = exports.bookshelf.Model.extend({
+  tableName: 'rooms',
+  users: function() {
+    return this.belongsToMany(User);
+  }
+});
+
+/* Room joins model */
+exports.RoomJoin = exports.bookshelf.Model.extend({
+  tableName: 'rooms_users'
 });
