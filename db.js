@@ -15,32 +15,20 @@ var knex = require('knex')({
 exports.bookshelf = bookshelf = require('bookshelf')(knex);
 
 /* User model */
-var User, Users;
-
-exports.User = User = bookshelf.Model.extend({
-  tableName: 'users',
-  rooms: function() {
-    return this.belongsToMany(Room);
-  }
+exports.User = bookshelf.Model.extend({
+  tableName: 'users'
 });
 
-exports.Users = Users = bookshelf.Collection.extend({
-  model: User
-});
-
-/* Room model */
-var Room;
-
-exports.Room = Room = bookshelf.Model.extend({
-  tableName: 'rooms',
-  users: function() {
-    return this.belongsToMany(User);
-  }
+exports.Users = bookshelf.Collection.extend({
+  model: exports.User
 });
 
 /* Room joins model */
-var RoomJoin;
-
-exports.RoomJoin = RoomJoin = bookshelf.Model.extend({
+exports.RoomJoin = bookshelf.Model.extend({
   tableName: 'rooms_users'
+});
+
+/* Room model */
+exports.Room = bookshelf.Model.extend({
+  tableName: 'rooms'
 });

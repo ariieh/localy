@@ -54,6 +54,7 @@ var knex = DB.bookshelf.knex;
 					}).save().then(function(roomjoin){
 						socket.join(placeName);
 				    io.emit('load marker', user);
+						
 						knex('users').count('id').then(function(res){
 							io.emit('user count', parseInt(res[0].count));
 						});
@@ -64,15 +65,21 @@ var knex = DB.bookshelf.knex;
 	  });
 		
 		socket.on('chat message', function(msg, userID){
-			DB.Users
-			  .query({where: {socket_id: userID}})
-			  .fetchOne()
-			  .then(function(model) {
-					
-					// for (var i = 0; i < model.rooms.length; i++){
-					// 	io.sockets.in(serverMarkerData[userID].rooms[i]).emit('chat message', msg, userID);
-					// }
-			  });
+			// Need to be able to get this working with Bookshelf!
+			
+			knex
+					.select("rooms.*")
+					.from('users')
+					.innerJoin('rooms_users', 'users.id', 'rooms_users.user_id')
+					.innerJoin('rooms', 'rooms.id', 'rooms_users.room_id')
+					.where('users.socket_id', '=', userID)
+					.then(function(rooms){
+
+						for (var i = 0; i < rooms.length; i++){
+							io.sockets.in(rooms[i].name).emit('chat message', msg, userID);
+						}
+						
+					});
 			
 		});
 				
@@ -83,12 +90,13 @@ var knex = DB.bookshelf.knex;
 			  .fetchOne()
 			  .then(function(user) {
 					user.destroy();
+					
+					knex('users').count('id').then(function(res){
+						io.emit('user count', res);
+				    io.emit('delete marker', socket.id);
+					});
 			  });
 			
-			knex('users').count('id').then(function(res){
-				io.emit('user count', res);
-		    io.emit('delete marker', socket.id);				
-			});
 		});
 				
 	});
