@@ -1,6 +1,8 @@
+var bookshelf;
+
 /* Initialize db */
 var knex = require('knex')({
-  client: 'pg',
+  client: 'postgresql',
   connection: {
     adapter : 'postgresql',
 		encoding : 'unicode',
@@ -10,22 +12,26 @@ var knex = require('knex')({
 });
 
 /* Initialize Bookshelf */
-exports.bookshelf = require('bookshelf')(knex);
+exports.bookshelf = bookshelf = require('bookshelf')(knex);
 
 /* User model */
-exports.User = exports.bookshelf.Model.extend({
+var User, Users;
+
+exports.User = User = bookshelf.Model.extend({
   tableName: 'users',
   rooms: function() {
     return this.belongsToMany(Room);
   }
 });
 
-exports.Users = exports.bookshelf.Collection.extend({
-  model: exports.User
+exports.Users = Users = bookshelf.Collection.extend({
+  model: User
 });
 
 /* Room model */
-exports.Room = exports.bookshelf.Model.extend({
+var Room;
+
+exports.Room = Room = bookshelf.Model.extend({
   tableName: 'rooms',
   users: function() {
     return this.belongsToMany(User);
@@ -33,6 +39,8 @@ exports.Room = exports.bookshelf.Model.extend({
 });
 
 /* Room joins model */
-exports.RoomJoin = exports.bookshelf.Model.extend({
+var RoomJoin;
+
+exports.RoomJoin = RoomJoin = bookshelf.Model.extend({
   tableName: 'rooms_users'
 });

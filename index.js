@@ -8,11 +8,7 @@ var io = require('socket.io')(http);
 
 /* DB */
 var DB = require('./db.js');
-app.set('bookshelf', DB.bookshelf);
-
-/* Data */
-var size = 0;
-var serverMarkerData = {};
+var knex = DB.bookshelf.knex;
 
 /* Router */
 	//Root
@@ -37,13 +33,13 @@ var serverMarkerData = {};
 	io.on('connection', function(socket){
 		
 		socket.on('load map', function(userID){
-			size += 1;
-			
-	    io.to(userID).emit('load map', serverMarkerData);
-			io.emit('user count', size);
+			knex.select().table('users').then(function(users){
+		    io.to(userID).emit('load map', users);				
+			});
 		});
 	
 	  socket.on('load marker', function(position, name, userID, placeName){
+			
 			new DB.User({
 				socket_id: userID,
 				name: name,
@@ -56,33 +52,44 @@ var serverMarkerData = {};
 					new DB.RoomJoin({
 						user_id: user.id,
 						room_id: room.id
-					}).save();
+					}).save().then(function(roomjoin){
+						socket.join(placeName);
+				    io.emit('load marker', user);
+						knex('users').count('id').then(function(res){
+							io.emit('user count', parseInt(res[0].count));
+						});
+					});
 				});
 			});
-			
-			socket.join(placeName);
-	    io.emit('load marker', {lat: position[0], lon: position[1]}, name, userID);
+
 	  });
 		
 		socket.on('chat message', function(msg, userID){
-			users
-			  .query('where', 'socket_id', '=', userID)
-			  .fetch()
-			  .then(function(collection) {
-					console.log(collection);
+			DB.Users
+			  .query({where: {socket_id: userID}})
+			  .fetchOne()
+			  .then(function(model) {
+					
+					// for (var i = 0; i < model.rooms.length; i++){
+					// 	io.sockets.in(serverMarkerData[userID].rooms[i]).emit('chat message', msg, userID);
+					// }
 			  });
 			
-			// for (var i = 0; i < serverMarkerData[userID].rooms.length; i++){
-			// 	io.sockets.in(serverMarkerData[userID].rooms[i]).emit('chat message', msg, userID);
-			// }
 		});
 				
-		socket.on('disconnect', function(){
-			size -= 1;
+		socket.on('disconnect', function(event){			
+
+			DB.Users
+			  .query({where: {socket_id: socket.id}})
+			  .fetchOne()
+			  .then(function(user) {
+					user.destroy();
+			  });
 			
-			delete serverMarkerData[socket.id];
-			io.emit('user count', size);
-	    io.emit('delete marker', socket.id);
+			knex('users').count('id').then(function(res){
+				io.emit('user count', res);
+		    io.emit('delete marker', socket.id);				
+			});
 		});
 				
 	});
