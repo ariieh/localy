@@ -5,8 +5,8 @@ exports.up = function(knex, Promise) {
 	  table.increments('id');
 	  table.string('name');
 	  table.string('socket_id');
-		table.decimal('latitude');
-		table.decimal('longitude');
+		table.decimal('latitude', '9', '7');
+		table.decimal('longitude', '9', '7');
 	
 		table.index('socket_id');
 		table.index('latitude');
