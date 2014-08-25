@@ -10,6 +10,13 @@ var io = require('socket.io')(http);
 var DB = require('./db.js');
 var knex = DB.bookshelf.knex;
 
+/* Helper functions */
+var userCount = function(callback){
+	knex('users').count('id').then(function(res){
+		callback(parseInt(res[0].count));
+	});
+}
+
 /* Router */
 	//Root
 	app.get('/', function(req, res){ res.sendfile('index.html'); });
@@ -54,10 +61,7 @@ var knex = DB.bookshelf.knex;
 					}).save().then(function(roomjoin){
 						socket.join(placeName);
 				    io.emit('load marker', user);
-						
-						knex('users').count('id').then(function(res){
-							io.emit('user count', parseInt(res[0].count));
-						});
+						userCount(function(count){ io.emit('user count', count); });
 					});
 				});
 			});
@@ -66,7 +70,6 @@ var knex = DB.bookshelf.knex;
 		
 		socket.on('chat message', function(msg, userID){
 			// Need to be able to get this working with Bookshelf!
-			
 			knex
 					.select("rooms.*")
 					.from('users')
@@ -74,31 +77,25 @@ var knex = DB.bookshelf.knex;
 					.innerJoin('rooms', 'rooms.id', 'rooms_users.room_id')
 					.where('users.socket_id', '=', userID)
 					.then(function(rooms){
-
 						for (var i = 0; i < rooms.length; i++){
 							io.sockets.in(rooms[i].name).emit('chat message', msg, userID);
 						}
-						
 					});
-			
 		});
 				
 		socket.on('disconnect', function(event){			
-
 			DB.Users
 			  .query({where: {socket_id: socket.id}})
 			  .fetchOne()
 			  .then(function(user) {
-					user.destroy();
-					
-					knex('users').count('id').then(function(res){
-						io.emit('user count', res);
-				    io.emit('delete marker', socket.id);
+					user.destroy().then(function(){
+						userCount(function(count){ 
+							io.emit('user count', count);
+							io.emit('delete marker', socket.id);
+						});
 					});
 			  });
-			
 		});
-				
 	});
 	
 /* Server */
