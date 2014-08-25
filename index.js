@@ -39,7 +39,6 @@ var knex = DB.bookshelf.knex;
 		});
 	
 	  socket.on('load marker', function(position, name, userID, placeName){
-			
 			new DB.User({
 				socket_id: userID,
 				name: name,
