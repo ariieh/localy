@@ -69,18 +69,23 @@ var msgAllRooms = function(rooms, msg, userID){
 				latitude: position[0],
 				longitude: position[1]
 			}).save().then(function(user){
-				new DB.Room({
-					roomname: placename
-				}).save().then(function(room){
-					new DB.RoomJoin({
-						user_id: user.id,
-						room_id: room.id
-					}).save().then(function(roomjoin){
-						socket.join(placename);
-				    io.emit('load marker', user);
-						userCount(function(count){ io.emit('user count', count); });
-					});
-				});
+				
+				DB.Rooms.query({where: {roomname: placename}}).fetchOne().then(function(existingRoom){
+						var newRoom = (existingRoom || new DB.Room( {roomname: placename} ));
+						
+						newRoom.save().then(function(room){
+							new DB.RoomJoin({
+								user_id: user.id,
+								room_id: room.id
+							}).save().then(function(roomjoin){
+								socket.join(placename);
+						    io.emit('load marker', user);
+								userCount(function(count){ io.emit('user count', count); });
+							});
+						});
+				  	
+				  });
+				
 			});
 
 	  });

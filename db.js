@@ -32,3 +32,7 @@ exports.RoomJoin = bookshelf.Model.extend({
 exports.Room = bookshelf.Model.extend({
   tableName: 'rooms'
 });
+
+exports.Rooms = bookshelf.Collection.extend({
+  model: exports.Room
+});
