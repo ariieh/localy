@@ -17,6 +17,23 @@ var userCount = function(callback){
 	});
 }
 
+var destroyUser = function(user){
+	var socketID = user.attributes.socket_id;
+	
+	user.destroy().then(function(){
+		userCount(function(count){ 
+			io.emit('user count', count);
+			io.emit('delete marker', socketID);
+		});
+	});
+}
+
+var msgAllRooms = function(rooms, msg, userID){
+	for (var i = 0; i < rooms.length; i++){
+		io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID);
+	}
+}
+
 /* Router */
 	//Root
 	app.get('/', function(req, res){ res.sendfile('index.html'); });
@@ -45,21 +62,21 @@ var userCount = function(callback){
 			});
 		});
 	
-	  socket.on('load marker', function(position, name, userID, placeName){
+	  socket.on('load marker', function(position, username, userID, placename){
 			new DB.User({
 				socket_id: userID,
-				name: name,
+				username: username,
 				latitude: position[0],
 				longitude: position[1]
 			}).save().then(function(user){
 				new DB.Room({
-					name: placeName
+					roomname: placename
 				}).save().then(function(room){
 					new DB.RoomJoin({
 						user_id: user.id,
 						room_id: room.id
 					}).save().then(function(roomjoin){
-						socket.join(placeName);
+						socket.join(placename);
 				    io.emit('load marker', user);
 						userCount(function(count){ io.emit('user count', count); });
 					});
@@ -77,9 +94,7 @@ var userCount = function(callback){
 					.innerJoin('rooms', 'rooms.id', 'rooms_users.room_id')
 					.where('users.socket_id', '=', userID)
 					.then(function(rooms){
-						for (var i = 0; i < rooms.length; i++){
-							io.sockets.in(rooms[i].name).emit('chat message', msg, userID);
-						}
+						msgAllRooms(rooms, msg, userID);
 					});
 		});
 				
@@ -87,14 +102,7 @@ var userCount = function(callback){
 			DB.Users
 			  .query({where: {socket_id: socket.id}})
 			  .fetchOne()
-			  .then(function(user) {
-					user.destroy().then(function(){
-						userCount(function(count){ 
-							io.emit('user count', count);
-							io.emit('delete marker', socket.id);
-						});
-					});
-			  });
+			  .then(destroyUser);
 		});
 	});
 	

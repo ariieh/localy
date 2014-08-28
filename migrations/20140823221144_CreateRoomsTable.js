@@ -3,9 +3,9 @@
 exports.up = function(knex, Promise) {
 	return knex.schema.createTable('rooms', function (table) {
 	  table.increments('id');
-	  table.string('name');
+	  table.string('roomname');
 
-		table.index('name');
+		table.index('roomname');
 	  table.timestamps();
 	});  
 };
