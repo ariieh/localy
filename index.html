@@ -11,12 +11,17 @@
   </head>
   <body>
 	<div id="legend-box">
-	  	<div id="chatroom"></div>
-	  	<div id="user-count"></div>
+	  	<div id="chatroom" class="nifty-box">
+			<span id="chatroom-label"></span>
+	  	</div>
+	  	<div id="user-count" class="nifty-box"></div>
 	</div>
 	  
 	<div id="map"></div>
-	<div id="chatbox"><ul id="chatbody"></ul></div>
+	<div id="chatbox">
+		
+		<ul id="chatbody"></ul>
+	</div>
 	
 	<div id="page-modal">
 		<div class="modal-text">
@@ -27,7 +32,7 @@
 	
 	<form id="chat-form">
 		<input type="text" id="chat-input" autocomplete="off"></input>
-		<button id="send-chat-message">Send</button>
+		<button id="send-chat-message" class="nifty-box">Send</button>
 	</form>
 	
 	<script src="/socket.io/socket.io.js"></script>
