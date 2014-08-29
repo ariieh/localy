@@ -93,7 +93,7 @@ var msgAllRooms = function(rooms, msg, userID){
 		socket.on('chat message', function(msg, userID){
 			// Need to be able to get this working with Bookshelf!
 			knex
-					.select("rooms.*")
+					.select('rooms.*')
 					.from('users')
 					.innerJoin('rooms_users', 'users.id', 'rooms_users.user_id')
 					.innerJoin('rooms', 'rooms.id', 'rooms_users.room_id')
@@ -101,6 +101,33 @@ var msgAllRooms = function(rooms, msg, userID){
 					.then(function(rooms){
 						msgAllRooms(rooms, msg, userID);
 					});
+		});
+		
+		socket.on('local message', function(msg, userID, lat, lon){
+			//All distances in miles
+			var earthRadius = 3959;
+			var localRadius = 0.02;
+			
+			var latDelta = localRadius / earthRadius;
+			var lonDelta = Math.asin(Math.sin(latDelta) / Math.cos(lat));
+			
+			var minLat = lat - latDelta;
+			var maxLat = lat + latDelta;
+			
+			var minLon = lon - lonDelta;
+			var maxLon = lon + lonDelta;			
+			
+			knex
+					.select('*')
+					.from('users')
+					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?)', 
+										[minLat, maxLat, minLon, maxLon])
+					.havingRaw('acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?',
+										[lat, lat, lon, latDelta])
+					.then(function(rows){
+						console.log(rows);
+					});
+			
 		});
 				
 		socket.on('disconnect', function(event){			
