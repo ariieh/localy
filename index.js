@@ -34,6 +34,14 @@ var msgAllRooms = function(rooms, msg, userID){
 	}
 }
 
+var degToRad = function(deg){
+	return deg * (Math.PI / 180);
+}
+
+var radToDeg = function(rad){
+	return rad * (180 / Math.PI);
+}
+
 /* Router */
 	//Root
 	app.get('/', function(req, res){ res.sendfile('index.html'); });
@@ -58,7 +66,7 @@ var msgAllRooms = function(rooms, msg, userID){
 		
 		socket.on('load map', function(userID){
 			knex.select().table('users').then(function(users){
-		    io.to(userID).emit('load map', users);				
+		    io.to(userID).emit('load map', users);
 			});
 		});
 	
@@ -66,8 +74,8 @@ var msgAllRooms = function(rooms, msg, userID){
 			new DB.User({
 				socket_id: userID,
 				username: username,
-				latitude: position[0],
-				longitude: position[1]
+				latitude: this.degToRad(position[0]),
+				longitude: this.degToRad(position[1])
 			}).save().then(function(user){
 				
 				DB.Rooms.query({where: {roomname: placename}}).fetchOne().then(function(existingRoom){
@@ -104,6 +112,9 @@ var msgAllRooms = function(rooms, msg, userID){
 		});
 		
 		socket.on('local message', function(msg, userID, lat, lon){
+			lat = this.degToRad(lat);
+			lon = this.degToRad(lon);
+			
 			//All distances in miles
 			var earthRadius = 3959;
 			var localRadius = 0.02;
@@ -116,14 +127,13 @@ var msgAllRooms = function(rooms, msg, userID){
 			
 			var minLon = lon - lonDelta;
 			var maxLon = lon + lonDelta;			
-			
+			// AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)
+			console.log([minLat, maxLat, minLon, maxLon])
+			console.log(lat, lon)
 			knex
 					.select('*')
 					.from('users')
-					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?)', 
-										[minLat, maxLat, minLon, maxLon])
-					.havingRaw('acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?',
-										[lat, lat, lon, latDelta])
+					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?)', [minLat, maxLat, minLon, maxLon])
 					.then(function(rows){
 						console.log(rows);
 					});
