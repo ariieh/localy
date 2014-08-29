@@ -74,8 +74,8 @@ var radToDeg = function(rad){
 			new DB.User({
 				socket_id: userID,
 				username: username,
-				latitude: this.degToRad(position[0]),
-				longitude: this.degToRad(position[1])
+				latitude: degToRad(position[0]),
+				longitude: degToRad(position[1])
 			}).save().then(function(user){
 				
 				DB.Rooms.query({where: {roomname: placename}}).fetchOne().then(function(existingRoom){
@@ -112,8 +112,8 @@ var radToDeg = function(rad){
 		});
 		
 		socket.on('local message', function(msg, userID, lat, lon){
-			lat = this.degToRad(lat);
-			lon = this.degToRad(lon);
+			lat = degToRad(lat);
+			lon = degToRad(lon);
 			
 			//All distances in miles
 			var earthRadius = 3959;
@@ -127,13 +127,11 @@ var radToDeg = function(rad){
 			
 			var minLon = lon - lonDelta;
 			var maxLon = lon + lonDelta;			
-			// AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)
-			console.log([minLat, maxLat, minLon, maxLon])
-			console.log(lat, lon)
+
 			knex
 					.select('*')
 					.from('users')
-					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?)', [minLat, maxLat, minLon, maxLon])
+					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?) AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)', [minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
 					.then(function(rows){
 						console.log(rows);
 					});
