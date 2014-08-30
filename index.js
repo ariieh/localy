@@ -133,7 +133,10 @@ var radToDeg = function(rad){
 					.from('users')
 					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?) AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)', [minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
 					.then(function(rows){
-						console.log(rows);
+						for (var i = 0; i < rows.length; i++){
+							var user = rows[i];
+					    io.to(user.socket_id).emit('chat message', msg, userID);
+						}
 					});
 			
 		});
