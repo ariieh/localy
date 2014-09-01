@@ -92,11 +92,33 @@ var radToDeg = function(rad){
 							});
 						});
 				  	
-				  });
+				});				
+			});
+	  });
+		
+		socket.on('swap room', function(socketID, placename){
+			DB.Users.query({where: {socket_id: socketID}}).fetchOne().then(function(user){
+
+				DB.Rooms.query({where: {roomname: placename}}).fetchOne().then(function(existingRoom){
+						var newRoom = (existingRoom || new DB.Room( {roomname: placename} ));
+						
+						newRoom.save().then(function(room){						
+							knex('rooms_users').where('user_id', user.id).del().then(function(){
+								new DB.RoomJoin({
+									user_id: user.id,
+									room_id: room.id
+								}).save().then(function(roomjoin){
+									for (var i = 0; i < socket.rooms.length; i++){
+										if (socket.rooms[i] !== socket.id) socket.leave(socket.rooms[i]);
+									}
+								});		
+							});
+						});
+						
+				});
 				
 			});
-
-	  });
+		});
 		
 		socket.on('chat message', function(msg, userID){
 			// Need to be able to get this working with Bookshelf!
