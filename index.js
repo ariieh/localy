@@ -135,7 +135,7 @@ var radToDeg = function(rad){
 					});
 		});
 		
-		socket.on('local message', function(msg, userID, lat, lon){
+		socket.on('radius message', function(msg, userID, lat, lon){
 			lat = degToRad(lat);
 			lon = degToRad(lon);
 			
