@@ -111,6 +111,8 @@ var radToDeg = function(rad){
 									for (var i = 0; i < socket.rooms.length; i++){
 										if (socket.rooms[i] !== socket.id) socket.leave(socket.rooms[i]);
 									}
+									
+									socket.join(placename);
 								});		
 							});
 						});
