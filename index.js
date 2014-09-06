@@ -136,14 +136,17 @@ var msgAllRooms = function(rooms, msg, userID){
 					});
 		});
 		
-		socket.on('radius message', function(msg, userID, type, bounds){			
+		socket.on('radius message', function(msg, userID, type, bounds){
 			var latDelta = bounds.latDelta;
+			
+			var lon = bounds.lon;
+			var lat = bounds.lat;
 			
 			var minLat = bounds.minLat;
 			var maxLat = bounds.maxLat;
 			
 			var minLon = bounds.minLon;
-			var maxLon = bounds.maxLon;			
+			var maxLon = bounds.maxLon;
 
 			knex
 					.select('*')
@@ -151,7 +154,7 @@ var msgAllRooms = function(rooms, msg, userID){
 					.whereRaw('(latitude >= ? AND latitude <= ?) '
 												+ 'AND (longitude >= ? AND longitude <= ?) '
 												+ 'AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)',
-												[minLat,maxLat, minLon, maxLon, lat, lat, lon, latDelta])
+												[minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
 					.then(function(rows){
 						for (var i = 0; i < rows.length; i++){
 							var user = rows[i];
