@@ -10,6 +10,15 @@ var io = require('socket.io')(http);
 var DB = require('./db.js');
 var knex = DB.bookshelf.knex;
 
+/* Math */
+var degToRad = function(deg){
+	return deg * (Math.PI / 180);
+}
+
+var radToDeg = function(rad){
+	return rad * (180 / Math.PI);
+}
+
 /* Helper functions */
 var userCount = function(callback){
 	knex('users').count('id').then(function(res){
@@ -32,14 +41,6 @@ var msgAllRooms = function(rooms, msg, userID){
 	for (var i = 0; i < rooms.length; i++){
 		io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID);
 	}
-}
-
-var degToRad = function(deg){
-	return deg * (Math.PI / 180);
-}
-
-var radToDeg = function(rad){
-	return rad * (180 / Math.PI);
 }
 
 /* Router */
@@ -135,31 +136,26 @@ var radToDeg = function(rad){
 					});
 		});
 		
-		socket.on('radius message', function(msg, userID, lat, lon){
-			lat = degToRad(lat);
-			lon = degToRad(lon);
+		socket.on('radius message', function(msg, userID, type, bounds){			
+			var latDelta = bounds.latDelta;
 			
-			//All distances in miles
-			var earthRadius = 3959;
-			var localRadius = 0.02;
+			var minLat = bounds.minLat;
+			var maxLat = bounds.maxLat;
 			
-			var latDelta = localRadius / earthRadius;
-			var lonDelta = Math.asin(Math.sin(latDelta) / Math.cos(lat));
-			
-			var minLat = lat - latDelta;
-			var maxLat = lat + latDelta;
-			
-			var minLon = lon - lonDelta;
-			var maxLon = lon + lonDelta;			
+			var minLon = bounds.minLon;
+			var maxLon = bounds.maxLon;			
 
 			knex
 					.select('*')
 					.from('users')
-					.whereRaw('(latitude >= ? AND latitude <= ?) AND (longitude >= ? AND longitude <= ?) AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)', [minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
+					.whereRaw('(latitude >= ? AND latitude <= ?) '
+												+ 'AND (longitude >= ? AND longitude <= ?) '
+												+ 'AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)',
+												[minLat,maxLat, minLon, maxLon, lat, lat, lon, latDelta])
 					.then(function(rows){
 						for (var i = 0; i < rows.length; i++){
 							var user = rows[i];
-					    io.to(user.socket_id).emit('chat message', msg, userID);
+					    io.to(user.socket_id).emit('chat message', msg, userID, type);
 						}
 					});
 			
