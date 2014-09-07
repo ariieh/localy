@@ -37,9 +37,9 @@ var destroyUser = function(user){
 	});
 }
 
-var msgAllRooms = function(rooms, msg, userID){
+var msgAllRooms = function(rooms, msg, userID, type){
 	for (var i = 0; i < rooms.length; i++){
-		io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID);
+		io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID, type);
 	}
 }
 
@@ -123,7 +123,7 @@ var msgAllRooms = function(rooms, msg, userID){
 			});
 		});
 		
-		socket.on('chat message', function(msg, userID){
+		socket.on('chat message', function(msg, userID, type){
 			// Need to be able to get this working with Bookshelf!
 			knex
 					.select('rooms.*')
@@ -132,7 +132,7 @@ var msgAllRooms = function(rooms, msg, userID){
 					.innerJoin('rooms', 'rooms.id', 'rooms_users.room_id')
 					.where('users.socket_id', '=', userID)
 					.then(function(rooms){
-						msgAllRooms(rooms, msg, userID);
+						msgAllRooms(rooms, msg, userID, type);
 					});
 		});
 		
