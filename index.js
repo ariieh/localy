@@ -147,18 +147,21 @@ var msgAllRooms = function(rooms, msg, userID, type){
 			
 			var minLon = bounds.minLon;
 			var maxLon = bounds.maxLon;
+			
+			var options = (type === "remote" ? {'lat': lat, 'lon': lon} : {});
 
 			knex
 					.select('*')
 					.from('users')
 					.whereRaw('(latitude >= ? AND latitude <= ?) '
-												+ 'AND (longitude >= ? AND longitude <= ?) '
-												+ 'AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)',
-												[minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
+										+ 'AND (longitude >= ? AND longitude <= ?) '
+										+ 'AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)',
+										[minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
 					.then(function(rows){
+						
 						for (var i = 0; i < rows.length; i++){
 							var user = rows[i];
-					    io.to(user.socket_id).emit('chat message', msg, userID, type);
+					  	io.to(user.socket_id).emit('chat message', msg, userID, type, options);
 						}
 					});
 			
