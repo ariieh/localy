@@ -149,7 +149,7 @@ var msgAllRooms = function(rooms, msg, userID, type){
 			var maxLon = bounds.maxLon;
 			
 			var options = (type === "remote" ? {'lat': lat, 'lon': lon} : {});
-
+			
 			knex
 					.select('*')
 					.from('users')
@@ -158,7 +158,6 @@ var msgAllRooms = function(rooms, msg, userID, type){
 										+ 'AND (acos(sin(?) * sin(latitude) + cos(?) * cos(latitude) * cos(longitude - (?))) <= ?)',
 										[minLat, maxLat, minLon, maxLon, lat, lat, lon, latDelta])
 					.then(function(rows){
-						
 						for (var i = 0; i < rows.length; i++){
 							var user = rows[i];
 					  	io.to(user.socket_id).emit('chat message', msg, userID, type, options);
