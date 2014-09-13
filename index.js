@@ -138,18 +138,16 @@ var msgAllRooms = function(rooms, msg, userID, type){
 		});
 		
 		socket.on('radius message', function(msg, userID, type, bounds){
-			var latDelta = bounds.latDelta;
+			var latDelta = bounds.radian.latDelta;
 			
-			var lon = bounds.lon;
-			var lat = bounds.lat;
+			var lon = bounds.radian.lon;
+			var lat = bounds.radian.lat;
 			
-			var minLat = bounds.minLat;
-			var maxLat = bounds.maxLat;
+			var minLat = bounds.radian.minLat;
+			var maxLat = bounds.radian.maxLat;
 			
-			var minLon = bounds.minLon;
-			var maxLon = bounds.maxLon;
-			
-			var options = (type === "remote" ? {'lat': lat, 'lon': lon} : {});
+			var minLon = bounds.radian.minLon;
+			var maxLon = bounds.radian.maxLon;
 			
 			knex
 					.select('*')
@@ -161,7 +159,7 @@ var msgAllRooms = function(rooms, msg, userID, type){
 					.then(function(rows){
 						for (var i = 0; i < rows.length; i++){
 							var user = rows[i];
-					  	io.to(user.socket_id).emit('chat message', msg, userID, type, options);
+					  	io.to(user.socket_id).emit('chat message', msg, userID, type, bounds);
 						}
 					});
 			
