@@ -166,7 +166,7 @@ var msgAllRooms = function(rooms, msg, userID, type){
 			
 		});
 				
-		socket.on('disconnect', function(event){			
+		socket.on('disconnect', function(event){
 			DB.Users
 			  .query({where: {socket_id: socket.id}})
 			  .fetchOne()
