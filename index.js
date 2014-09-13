@@ -64,6 +64,7 @@ var msgAllRooms = function(rooms, msg, userID, type){
 
 /* IO connections */
 	io.on('connection', function(socket){
+    io.to(socket.id).emit('connected');
 		
 		socket.on('load map', function(userID){
 			knex.select().table('users').then(function(users){
