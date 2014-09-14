@@ -1,5 +1,7 @@
 'use strict';
 
+/* Node server */
+
 /* Initialize server and sockets */
 var express = require('express');
 var app = express();
