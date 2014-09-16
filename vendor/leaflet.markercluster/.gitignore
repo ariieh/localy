@@ -5,3 +5,5 @@ obj
 # mstest test results
 TestResults
 node_modules
+node_modules/
+/node_modules/
