@@ -57,11 +57,14 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/vendor/jquery.min.js"></script>
 	<script src="/vendor/jquery-ui.min.js"></script>
+	<script src="/vendor/underscore.js"></script>
+	<script src="/vendor/backbone.js"></script>
 	<script src="/vendor/leaflet.js"></script>	
 	<script src="/vendor/nycneighborhoods.js"></script>
 	<script src="/vendor/leaflet-pip.js"></script>
 	<script src="/vendor/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
 	<script src="/vendor/spin.min.js"></script>
+
 	
 	<!-- Require libraries -->
 	<script src="/lib/neighborhoodstyles.js"></script>
@@ -69,6 +72,14 @@
 	<script src="/lib/mathlib.js"></script>
 	<script src="/lib/locator.js"></script>
 	<script src="/lib/localy.js"></script>
+	<script src="/lib/localy_backbone.js"></script>
 	<script src="/lib/index.js"></script>
+
+	<script>
+		$(document).ready(function(){
+		  Localy.initialize();
+		});
+	</script>
+
   </body>
 </html>
