@@ -10,48 +10,14 @@
 	
   </head>
   <body>
-  <div id="main-flash" class="nifty-box">
-  	<div id="flash-content-wrapper"></div>
-  </div>
-
-	<div id="legend-box">
-	  	<div id="chatroom" class="nifty-box">
-				<span id="chatroom-label"></span>
-	  	</div>
-
-	  	<div id="user-count" class="nifty-box"></div>
-	</div>
-	  
-	<div id="map"></div>
-
-	<div id="chatbox">
-		<div id="chatbox-button-wrapper">
-			<div class="nifty-box chatroom-button local-button">
-				Local
-				<span class="notification-badge" id="local-badge">0</span>
-			</div>
-		
-			<div class="nifty-box blue chatroom-button hood-button">
-				'Hood
-				<span class="notification-badge" id="hood-badge">0</span>
-				<span class="downward-select-triangle"></span>
-			</div>
-		</div>
-
-		<ul class="active"></ul>
-	</div>
-	
-	<div id="page-modal">
-		<div class="modal-text">
-			Name. Plz?
-			<input id="name-input" type="text"></input>
-		</div>
-	</div>
-	
-	<form id="chat-form">
-		<input type="text" id="chat-input" autocomplete="off"></input>
-		<button id="send-chat-message" class="nifty-box blue">Send</button>
-	</form>
+  
+  <section id="main">
+    <div id="main-flash" class="nifty-box"></div>
+    <div id="legend-box"></div>
+    <div id="map"></div>
+    <div id="chatbox"></div>
+    <div id="page-modal"></div>
+  </section>
 	
 	<!-- Require vendor libraries -->
 	<script src="/socket.io/socket.io.js"></script>
@@ -66,20 +32,8 @@
 	<script src="/vendor/spin.min.js"></script>
 
 	
-	<!-- Require libraries -->
-	<script src="/lib/neighborhoodstyles.js"></script>
-	<script src="/lib/helper.js"></script>
-	<script src="/lib/mathlib.js"></script>
-	<script src="/lib/locator.js"></script>
-	<script src="/lib/localy.js"></script>
-	<script src="/lib/localy_backbone.js"></script>
-	<script src="/lib/index.js"></script>
-
-	<script>
-		$(document).ready(function(){
-		  Localy.initialize();
-		});
-	</script>
+	<!-- PRECOMPILE WITH GRUNT -->
+	<script src="/lib/client/build/development.js"></script>
 
   </body>
 </html>
