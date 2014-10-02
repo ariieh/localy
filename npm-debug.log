@@ -1,0 +1,493 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'cache', 'clear' ]
+2 info using npm@2.0.2
+3 info using node@v0.10.31
+4 silly ls normalized
+5 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/abbrev
+6 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/accepts
+7 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/adm-zip
+8 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/after
+9 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/amdefine
+10 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ansi-regex
+11 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ansi-styles
+12 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/argparse
+13 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/arraybuffer.slice
+14 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/asn1
+15 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/assert-plus
+16 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/async
+17 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/aws-sign2
+18 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/backbone
+19 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/base64-arraybuffer
+20 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/base64id
+21 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/benchmark
+22 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/better-assert
+23 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/bindings
+24 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/bl
+25 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/blob
+26 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/bluebird
+27 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/bookshelf
+28 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/boom
+29 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/buffer-crc32
+30 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/callsite
+31 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/caseless
+32 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/casperjs
+33 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/chalk
+34 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/coffee-script
+35 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/colors
+36 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/combined-stream
+37 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/commander
+38 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/component-bind
+39 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/component-emitter
+40 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/component-inherit
+41 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/config-chain
+42 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/contextify
+43 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/cookie
+44 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/cookie-signature
+45 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/core-util-is
+46 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/create-error
+47 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/cryptiles
+48 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/cssom
+49 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/cssstyle
+50 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ctype
+51 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/dateformat
+52 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/debug
+53 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/deep-extend
+54 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/delayed-stream
+55 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/depd
+56 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/destroy
+57 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/diff
+58 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/domelementtype
+59 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/domhandler
+60 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/domutils
+61 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ee-first
+62 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ejs
+63 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/emitter
+64 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/encoding
+65 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/engine.io
+66 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/engine.io-client
+67 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/engine.io-parser
+68 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/entities
+69 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/escape-html
+70 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/escape-string-regexp
+71 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/esprima
+72 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/etag
+73 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/eventemitter2
+74 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/eventsource
+75 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/exit
+76 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/express
+77 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/extend
+78 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/finalhandler
+79 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/findup-sync
+80 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/forever-agent
+81 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/form-data
+82 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/formatio
+83 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/fresh
+84 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/generic-pool-redux
+85 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/getobject
+86 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/glob
+87 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/global
+88 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/graceful-fs
+89 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/growl
+90 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/grunt
+91 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/grunt-cli
+92 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/grunt-contrib-concat
+93 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/grunt-legacy-log
+94 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/grunt-legacy-util
+95 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/has-ansi
+96 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/has-binary
+97 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/has-binary-data
+98 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/has-color
+99 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/has-cors
+100 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/hawk
+101 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/hoek
+102 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/hooker
+103 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/html5
+104 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/html5-entities
+105 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/htmlparser2
+106 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/http-signature
+107 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/iconv-lite
+108 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/indexof
+109 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/inflection
+110 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/inherits
+111 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ini
+112 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/interpret
+113 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ipaddr.js
+114 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/isarray
+115 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/jade
+116 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/js-yaml
+117 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/jsdom
+118 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/json-stringify-safe
+119 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/json3
+120 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/kew
+121 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/knex
+122 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/liftoff
+123 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/lodash
+124 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/lru-cache
+125 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/media-typer
+126 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/merge-descriptors
+127 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/methods
+128 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/microtime
+129 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/mime
+130 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/mime-db
+131 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/mime-types
+132 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/minimatch
+133 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/minimist
+134 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/mkdirp
+135 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/mkpath
+136 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/mocha
+137 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ms
+138 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/nan
+139 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ncp
+140 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/negotiator
+141 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/nightwatch
+142 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/node-inspector
+143 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/node-sass
+144 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/node-sass-middleware
+145 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/node-uuid
+146 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/node-watch
+147 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/nopt
+148 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/npm
+149 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/npmconf
+150 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/nwmatcher
+151 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/oauth-sign
+152 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/object-assign
+153 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/object-component
+154 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/on-finished
+155 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/once
+156 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/opener
+157 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/optimist
+158 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/options
+159 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/opts
+160 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/osenv
+161 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/parsejson
+162 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/parseqs
+163 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/parseuri
+164 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/parseurl
+165 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/path-to-regexp
+166 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/phantomjs
+167 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/progress
+168 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/proto-list
+169 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/proxy-addr
+170 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/punycode
+171 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/q
+172 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/qs
+173 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/range-parser
+174 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/rc
+175 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/readable-stream
+176 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/registry.npmjs.org
+177 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/request
+178 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/request-progress
+179 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/resolve
+180 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/rimraf
+181 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/samsam
+182 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/semver
+183 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/send
+184 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/serve-static
+185 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/shelljs
+186 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/sigmund
+187 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/simple-extend
+188 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/sinon
+189 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/sntp
+190 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/socket
+191 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/socket.io
+192 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/socket.io-adapter
+193 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/socket.io-client
+194 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/socket.io-parser
+195 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/source-map
+196 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/string_decoder
+197 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/stringstream
+198 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/strip-ansi
+199 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/strong-data-uri
+200 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/supports-color
+201 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/throttleit
+202 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/tildify
+203 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/tinycolor
+204 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/to-array
+205 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/tough-cookie
+206 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/trigger-then
+207 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/truncate
+208 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/tunnel-agent
+209 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/type-is
+210 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/uid-number
+211 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/underscore
+212 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/underscore.string
+213 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/utf8
+214 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/util
+215 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/utils-merge
+216 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/vary
+217 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/which
+218 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/wordwrap
+219 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/wrappy
+220 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/ws
+221 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/xmlhttprequest
+222 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/yargs
+223 verbose gentlyRm vacuuming /Users/ariehsmith/.npm/zombie
+224 silly gentlyRm purging /Users/ariehsmith/.npm/abbrev
+225 silly gentlyRm purging /Users/ariehsmith/.npm/accepts
+226 silly gentlyRm purging /Users/ariehsmith/.npm/adm-zip
+227 silly gentlyRm purging /Users/ariehsmith/.npm/amdefine
+228 silly gentlyRm purging /Users/ariehsmith/.npm/after
+229 silly gentlyRm purging /Users/ariehsmith/.npm/ansi-regex
+230 silly gentlyRm purging /Users/ariehsmith/.npm/ansi-styles
+231 silly gentlyRm purging /Users/ariehsmith/.npm/argparse
+232 silly gentlyRm purging /Users/ariehsmith/.npm/arraybuffer.slice
+233 silly gentlyRm purging /Users/ariehsmith/.npm/asn1
+234 silly gentlyRm purging /Users/ariehsmith/.npm/assert-plus
+235 silly gentlyRm purging /Users/ariehsmith/.npm/async
+236 silly gentlyRm purging /Users/ariehsmith/.npm/aws-sign2
+237 silly gentlyRm purging /Users/ariehsmith/.npm/backbone
+238 silly gentlyRm purging /Users/ariehsmith/.npm/base64-arraybuffer
+239 silly gentlyRm purging /Users/ariehsmith/.npm/base64id
+240 silly gentlyRm purging /Users/ariehsmith/.npm/benchmark
+241 silly gentlyRm purging /Users/ariehsmith/.npm/better-assert
+242 silly gentlyRm purging /Users/ariehsmith/.npm/bindings
+243 silly gentlyRm purging /Users/ariehsmith/.npm/bl
+244 silly gentlyRm purging /Users/ariehsmith/.npm/blob
+245 silly gentlyRm purging /Users/ariehsmith/.npm/bluebird
+246 silly gentlyRm purging /Users/ariehsmith/.npm/bookshelf
+247 silly gentlyRm purging /Users/ariehsmith/.npm/boom
+248 silly gentlyRm purging /Users/ariehsmith/.npm/buffer-crc32
+249 silly gentlyRm purging /Users/ariehsmith/.npm/callsite
+250 silly gentlyRm purging /Users/ariehsmith/.npm/caseless
+251 silly gentlyRm purging /Users/ariehsmith/.npm/chalk
+252 silly gentlyRm purging /Users/ariehsmith/.npm/casperjs
+253 silly gentlyRm purging /Users/ariehsmith/.npm/coffee-script
+254 silly gentlyRm purging /Users/ariehsmith/.npm/colors
+255 silly gentlyRm purging /Users/ariehsmith/.npm/combined-stream
+256 silly gentlyRm purging /Users/ariehsmith/.npm/commander
+257 silly gentlyRm purging /Users/ariehsmith/.npm/component-emitter
+258 silly gentlyRm purging /Users/ariehsmith/.npm/component-inherit
+259 silly gentlyRm purging /Users/ariehsmith/.npm/config-chain
+260 silly gentlyRm purging /Users/ariehsmith/.npm/contextify
+261 silly gentlyRm purging /Users/ariehsmith/.npm/cookie-signature
+262 silly gentlyRm purging /Users/ariehsmith/.npm/core-util-is
+263 silly gentlyRm purging /Users/ariehsmith/.npm/create-error
+264 silly gentlyRm purging /Users/ariehsmith/.npm/cryptiles
+265 silly gentlyRm purging /Users/ariehsmith/.npm/cssom
+266 silly gentlyRm purging /Users/ariehsmith/.npm/cssstyle
+267 silly gentlyRm purging /Users/ariehsmith/.npm/ctype
+268 silly gentlyRm purging /Users/ariehsmith/.npm/dateformat
+269 silly gentlyRm purging /Users/ariehsmith/.npm/debug
+270 silly gentlyRm purging /Users/ariehsmith/.npm/deep-extend
+271 silly gentlyRm purging /Users/ariehsmith/.npm/delayed-stream
+272 silly gentlyRm purging /Users/ariehsmith/.npm/depd
+273 silly gentlyRm purging /Users/ariehsmith/.npm/destroy
+274 silly gentlyRm purging /Users/ariehsmith/.npm/cookie
+275 silly gentlyRm purging /Users/ariehsmith/.npm/diff
+276 silly gentlyRm purging /Users/ariehsmith/.npm/domelementtype
+277 silly gentlyRm purging /Users/ariehsmith/.npm/domhandler
+278 silly gentlyRm purging /Users/ariehsmith/.npm/domutils
+279 silly gentlyRm purging /Users/ariehsmith/.npm/ee-first
+280 silly gentlyRm purging /Users/ariehsmith/.npm/ejs
+281 silly gentlyRm purging /Users/ariehsmith/.npm/emitter
+282 silly gentlyRm purging /Users/ariehsmith/.npm/encoding
+283 silly gentlyRm purging /Users/ariehsmith/.npm/engine.io
+284 silly gentlyRm purging /Users/ariehsmith/.npm/engine.io-client
+285 silly gentlyRm purging /Users/ariehsmith/.npm/engine.io-parser
+286 silly gentlyRm purging /Users/ariehsmith/.npm/entities
+287 silly gentlyRm purging /Users/ariehsmith/.npm/escape-html
+288 silly gentlyRm purging /Users/ariehsmith/.npm/component-bind
+289 silly gentlyRm purging /Users/ariehsmith/.npm/escape-string-regexp
+290 silly gentlyRm purging /Users/ariehsmith/.npm/esprima
+291 silly gentlyRm purging /Users/ariehsmith/.npm/etag
+292 silly gentlyRm purging /Users/ariehsmith/.npm/eventemitter2
+293 silly gentlyRm purging /Users/ariehsmith/.npm/eventsource
+294 silly gentlyRm purging /Users/ariehsmith/.npm/exit
+295 silly gentlyRm purging /Users/ariehsmith/.npm/express
+296 silly gentlyRm purging /Users/ariehsmith/.npm/extend
+297 silly gentlyRm purging /Users/ariehsmith/.npm/finalhandler
+298 silly gentlyRm purging /Users/ariehsmith/.npm/findup-sync
+299 silly gentlyRm purging /Users/ariehsmith/.npm/forever-agent
+300 silly gentlyRm purging /Users/ariehsmith/.npm/form-data
+301 silly gentlyRm purging /Users/ariehsmith/.npm/formatio
+302 silly gentlyRm purging /Users/ariehsmith/.npm/fresh
+303 silly gentlyRm purging /Users/ariehsmith/.npm/generic-pool-redux
+304 silly gentlyRm purging /Users/ariehsmith/.npm/getobject
+305 silly gentlyRm purging /Users/ariehsmith/.npm/glob
+306 silly gentlyRm purging /Users/ariehsmith/.npm/global
+307 silly gentlyRm purging /Users/ariehsmith/.npm/graceful-fs
+308 silly gentlyRm purging /Users/ariehsmith/.npm/growl
+309 silly gentlyRm purging /Users/ariehsmith/.npm/grunt
+310 silly gentlyRm purging /Users/ariehsmith/.npm/grunt-cli
+311 silly gentlyRm purging /Users/ariehsmith/.npm/grunt-contrib-concat
+312 silly gentlyRm purging /Users/ariehsmith/.npm/grunt-legacy-log
+313 silly gentlyRm purging /Users/ariehsmith/.npm/grunt-legacy-util
+314 silly gentlyRm purging /Users/ariehsmith/.npm/has-ansi
+315 silly gentlyRm purging /Users/ariehsmith/.npm/has-binary
+316 silly gentlyRm purging /Users/ariehsmith/.npm/has-binary-data
+317 silly gentlyRm purging /Users/ariehsmith/.npm/has-color
+318 silly gentlyRm purging /Users/ariehsmith/.npm/has-cors
+319 silly gentlyRm purging /Users/ariehsmith/.npm/hawk
+320 silly gentlyRm purging /Users/ariehsmith/.npm/hoek
+321 silly gentlyRm purging /Users/ariehsmith/.npm/hooker
+322 silly gentlyRm purging /Users/ariehsmith/.npm/html5
+323 silly gentlyRm purging /Users/ariehsmith/.npm/html5-entities
+324 silly gentlyRm purging /Users/ariehsmith/.npm/htmlparser2
+325 silly gentlyRm purging /Users/ariehsmith/.npm/http-signature
+326 silly gentlyRm purging /Users/ariehsmith/.npm/iconv-lite
+327 silly gentlyRm purging /Users/ariehsmith/.npm/indexof
+328 silly gentlyRm purging /Users/ariehsmith/.npm/inflection
+329 silly gentlyRm purging /Users/ariehsmith/.npm/inherits
+330 silly gentlyRm purging /Users/ariehsmith/.npm/ini
+331 silly gentlyRm purging /Users/ariehsmith/.npm/interpret
+332 silly gentlyRm purging /Users/ariehsmith/.npm/ipaddr.js
+333 silly gentlyRm purging /Users/ariehsmith/.npm/isarray
+334 silly gentlyRm purging /Users/ariehsmith/.npm/jade
+335 silly gentlyRm purging /Users/ariehsmith/.npm/js-yaml
+336 silly gentlyRm purging /Users/ariehsmith/.npm/jsdom
+337 silly gentlyRm purging /Users/ariehsmith/.npm/json-stringify-safe
+338 silly gentlyRm purging /Users/ariehsmith/.npm/json3
+339 silly gentlyRm purging /Users/ariehsmith/.npm/kew
+340 silly gentlyRm purging /Users/ariehsmith/.npm/knex
+341 silly gentlyRm purging /Users/ariehsmith/.npm/liftoff
+342 silly gentlyRm purging /Users/ariehsmith/.npm/lodash
+343 silly gentlyRm purging /Users/ariehsmith/.npm/lru-cache
+344 silly gentlyRm purging /Users/ariehsmith/.npm/media-typer
+345 silly gentlyRm purging /Users/ariehsmith/.npm/merge-descriptors
+346 silly gentlyRm purging /Users/ariehsmith/.npm/methods
+347 silly gentlyRm purging /Users/ariehsmith/.npm/microtime
+348 silly gentlyRm purging /Users/ariehsmith/.npm/mime
+349 silly gentlyRm purging /Users/ariehsmith/.npm/mime-db
+350 silly gentlyRm purging /Users/ariehsmith/.npm/mime-types
+351 silly gentlyRm purging /Users/ariehsmith/.npm/minimatch
+352 silly gentlyRm purging /Users/ariehsmith/.npm/minimist
+353 silly gentlyRm purging /Users/ariehsmith/.npm/mkdirp
+354 silly gentlyRm purging /Users/ariehsmith/.npm/mkpath
+355 silly gentlyRm purging /Users/ariehsmith/.npm/mocha
+356 silly gentlyRm purging /Users/ariehsmith/.npm/ms
+357 silly gentlyRm purging /Users/ariehsmith/.npm/nan
+358 silly gentlyRm purging /Users/ariehsmith/.npm/ncp
+359 silly gentlyRm purging /Users/ariehsmith/.npm/negotiator
+360 silly gentlyRm purging /Users/ariehsmith/.npm/nightwatch
+361 silly gentlyRm purging /Users/ariehsmith/.npm/node-inspector
+362 silly gentlyRm purging /Users/ariehsmith/.npm/node-sass
+363 silly gentlyRm purging /Users/ariehsmith/.npm/node-sass-middleware
+364 silly gentlyRm purging /Users/ariehsmith/.npm/node-uuid
+365 silly gentlyRm purging /Users/ariehsmith/.npm/node-watch
+366 silly gentlyRm purging /Users/ariehsmith/.npm/nopt
+367 silly gentlyRm purging /Users/ariehsmith/.npm/npm
+368 silly gentlyRm purging /Users/ariehsmith/.npm/npmconf
+369 silly gentlyRm purging /Users/ariehsmith/.npm/nwmatcher
+370 silly gentlyRm purging /Users/ariehsmith/.npm/oauth-sign
+371 silly gentlyRm purging /Users/ariehsmith/.npm/object-assign
+372 silly gentlyRm purging /Users/ariehsmith/.npm/object-component
+373 silly gentlyRm purging /Users/ariehsmith/.npm/on-finished
+374 silly gentlyRm purging /Users/ariehsmith/.npm/once
+375 silly gentlyRm purging /Users/ariehsmith/.npm/opener
+376 silly gentlyRm purging /Users/ariehsmith/.npm/optimist
+377 silly gentlyRm purging /Users/ariehsmith/.npm/options
+378 silly gentlyRm purging /Users/ariehsmith/.npm/opts
+379 silly gentlyRm purging /Users/ariehsmith/.npm/osenv
+380 silly gentlyRm purging /Users/ariehsmith/.npm/parsejson
+381 silly gentlyRm purging /Users/ariehsmith/.npm/parseqs
+382 silly gentlyRm purging /Users/ariehsmith/.npm/parseuri
+383 silly gentlyRm purging /Users/ariehsmith/.npm/parseurl
+384 silly gentlyRm purging /Users/ariehsmith/.npm/path-to-regexp
+385 silly gentlyRm purging /Users/ariehsmith/.npm/phantomjs
+386 silly gentlyRm purging /Users/ariehsmith/.npm/progress
+387 silly gentlyRm purging /Users/ariehsmith/.npm/proto-list
+388 silly gentlyRm purging /Users/ariehsmith/.npm/proxy-addr
+389 silly gentlyRm purging /Users/ariehsmith/.npm/punycode
+390 silly gentlyRm purging /Users/ariehsmith/.npm/q
+391 silly gentlyRm purging /Users/ariehsmith/.npm/qs
+392 silly gentlyRm purging /Users/ariehsmith/.npm/range-parser
+393 silly gentlyRm purging /Users/ariehsmith/.npm/rc
+394 silly gentlyRm purging /Users/ariehsmith/.npm/readable-stream
+395 silly gentlyRm purging /Users/ariehsmith/.npm/registry.npmjs.org
+396 silly gentlyRm purging /Users/ariehsmith/.npm/request
+397 silly gentlyRm purging /Users/ariehsmith/.npm/request-progress
+398 silly gentlyRm purging /Users/ariehsmith/.npm/resolve
+399 silly gentlyRm purging /Users/ariehsmith/.npm/rimraf
+400 silly gentlyRm purging /Users/ariehsmith/.npm/samsam
+401 silly gentlyRm purging /Users/ariehsmith/.npm/semver
+402 silly gentlyRm purging /Users/ariehsmith/.npm/send
+403 silly gentlyRm purging /Users/ariehsmith/.npm/serve-static
+404 silly gentlyRm purging /Users/ariehsmith/.npm/shelljs
+405 silly gentlyRm purging /Users/ariehsmith/.npm/sigmund
+406 silly gentlyRm purging /Users/ariehsmith/.npm/simple-extend
+407 silly gentlyRm purging /Users/ariehsmith/.npm/sinon
+408 silly gentlyRm purging /Users/ariehsmith/.npm/sntp
+409 silly gentlyRm purging /Users/ariehsmith/.npm/socket
+410 silly gentlyRm purging /Users/ariehsmith/.npm/socket.io
+411 silly gentlyRm purging /Users/ariehsmith/.npm/socket.io-adapter
+412 silly gentlyRm purging /Users/ariehsmith/.npm/socket.io-client
+413 silly gentlyRm purging /Users/ariehsmith/.npm/socket.io-parser
+414 silly gentlyRm purging /Users/ariehsmith/.npm/source-map
+415 silly gentlyRm purging /Users/ariehsmith/.npm/string_decoder
+416 silly gentlyRm purging /Users/ariehsmith/.npm/stringstream
+417 silly gentlyRm purging /Users/ariehsmith/.npm/strip-ansi
+418 silly gentlyRm purging /Users/ariehsmith/.npm/strong-data-uri
+419 silly gentlyRm purging /Users/ariehsmith/.npm/supports-color
+420 silly gentlyRm purging /Users/ariehsmith/.npm/throttleit
+421 silly gentlyRm purging /Users/ariehsmith/.npm/tildify
+422 silly gentlyRm purging /Users/ariehsmith/.npm/tinycolor
+423 silly gentlyRm purging /Users/ariehsmith/.npm/to-array
+424 silly gentlyRm purging /Users/ariehsmith/.npm/tough-cookie
+425 silly gentlyRm purging /Users/ariehsmith/.npm/trigger-then
+426 silly gentlyRm purging /Users/ariehsmith/.npm/truncate
+427 silly gentlyRm purging /Users/ariehsmith/.npm/tunnel-agent
+428 silly gentlyRm purging /Users/ariehsmith/.npm/type-is
+429 silly gentlyRm purging /Users/ariehsmith/.npm/uid-number
+430 silly gentlyRm purging /Users/ariehsmith/.npm/underscore
+431 silly gentlyRm purging /Users/ariehsmith/.npm/underscore.string
+432 silly gentlyRm purging /Users/ariehsmith/.npm/utf8
+433 silly gentlyRm purging /Users/ariehsmith/.npm/util
+434 silly gentlyRm purging /Users/ariehsmith/.npm/utils-merge
+435 silly gentlyRm purging /Users/ariehsmith/.npm/vary
+436 silly gentlyRm purging /Users/ariehsmith/.npm/which
+437 silly gentlyRm purging /Users/ariehsmith/.npm/wordwrap
+438 silly gentlyRm purging /Users/ariehsmith/.npm/wrappy
+439 silly gentlyRm purging /Users/ariehsmith/.npm/ws
+440 silly gentlyRm purging /Users/ariehsmith/.npm/xmlhttprequest
+441 silly gentlyRm purging /Users/ariehsmith/.npm/yargs
+442 silly gentlyRm purging /Users/ariehsmith/.npm/zombie
+443 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+444 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+445 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+446 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+447 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+448 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+449 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+450 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+451 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+452 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+453 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+454 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+455 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+456 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+457 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+458 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+459 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+460 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+461 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+462 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+463 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+464 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+465 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+466 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+467 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+468 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+469 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+470 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+471 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+472 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+473 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+474 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+475 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+476 silly gentlyRm quitting because other entries in /Users/ariehsmith/.npm
+477 verbose stack Error: EACCES, unlink '/Users/ariehsmith/.npm/abbrev/1.0.5'
+478 verbose cwd /Users/ariehsmith/Documents/localy
+479 error Darwin 13.4.0
+480 error argv "node" "/usr/local/bin/npm" "cache" "clear"
+481 error node v0.10.31
+482 error npm  v2.0.2
+483 error path /Users/ariehsmith/.npm/abbrev/1.0.5
+484 error code EACCES
+485 error errno 3
+486 error Error: EACCES, unlink '/Users/ariehsmith/.npm/abbrev/1.0.5'
+486 error  { [Error: EACCES, unlink '/Users/ariehsmith/.npm/abbrev/1.0.5']
+486 error   errno: 3,
+486 error   code: 'EACCES',
+486 error   path: '/Users/ariehsmith/.npm/abbrev/1.0.5' }
+487 error Please try running this command again as root/Administrator.
+488 verbose exit [ 3, true ]
