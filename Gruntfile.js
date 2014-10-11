@@ -16,10 +16,21 @@ module.exports = function(grunt) {
         ],
         dest: 'lib/client/build/development.js',
       }
-    }
+    },
 
+    sass: {
+      options: {
+        sourceMap: false
+      },
+      dist: {
+        files: {
+          'stylesheets/custom.css': 'stylesheets/custom.scss'
+        }
+      }
+    }
   });
 
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['concat', 'sass']);
 };

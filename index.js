@@ -58,7 +58,6 @@ io.on('connection', function(socket) {
   });
 			
 	socket.on('chat message', function(msg, userID, type) {
-		// Need to be able to get this working with Bookshelf!
 		DBHelper.findRoomsContainingUser(userID, function(rooms) {
 			msgAllRooms(rooms, msg, userID, type);
 		});
@@ -66,8 +65,8 @@ io.on('connection', function(socket) {
 	
 	socket.on('radius message', function(msg, userID, type, lat, lon) {
 		DBHelper.findUsersInRadius(lat, lon, function(users) {
-			for (var i = 0; i < rows.length; i++) {
-				var user = rows[i];
+			for (var i = 0; i < users.length; i++) {
+				var user = users[i];
 		  	io.to(user.socket_id).emit('chat message', msg, userID, type, lat, lon);
 			}
 	  });
@@ -77,7 +76,7 @@ io.on('connection', function(socket) {
 		DBHelper.findUserBySocketID(socket.id, function(user) {
       DBHelper.destroyUser(user, function(count) {
         io.emit('user count', count);
-        io.emit('delete marker', user.attributes.socket_id);
+        io.emit('delete marker', socket.id);
       });
     });
 	});
@@ -85,6 +84,6 @@ io.on('connection', function(socket) {
 });
 	
 /* Server */
-	http.listen(3000, function() {
-	  console.log('listening on *:3000');
-	});
+http.listen(3000, function() {
+  console.log('listening on *:3000');
+});
