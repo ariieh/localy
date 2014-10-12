@@ -56,6 +56,16 @@ io.on('connection', function(socket) {
   		});
   	});
   });
+
+  socket.on('join room', function(roomname) {
+    DBHelper.findUserBySocketID(socket.id, function(user) {
+      DBHelper.findOrCreateRoom(roomname, function(room) {
+        DBHelper.joinRoom(user.id, room.id, function(roomjoin) {
+          socket.join(roomname);
+        });
+      });
+    });
+  });
 			
 	socket.on('chat message', function(msg, userID, type) {
 		DBHelper.findRoomsContainingUser(userID, function(rooms) {
