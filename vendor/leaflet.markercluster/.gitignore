@@ -2,6 +2,10 @@
 bin
 obj
 build
+/build
+/lib/client/build
+lib/client/build
+development.js
 
 # mstest test results
 TestResults
