@@ -23,13 +23,6 @@ var DBHelper = exports.DBHelper = require('./lib/server/db_helper.js');
 /* Router */
 var router = exports.router = require('./lib/server/router.js');
 
-/* Misc */
-var msgAllRooms = function(rooms, msg, userID, type) {
-	for (var i = 0; i < rooms.length; i++) {
-		io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID, type);
-	}
-}
-
 /* IO connections */
 io.on('connection', function(socket) {
   io.to(socket.id).emit('connected');
@@ -66,10 +59,16 @@ io.on('connection', function(socket) {
       });
     });
   });
-			
-	socket.on('chat message', function(msg, userID, type) {
+
+  socket.on('hood message', function(msg, userID, hood) {
+    io.sockets.in(hood).emit('chat message', msg, userID, hood);
+  });
+
+	socket.on('global message', function(msg, userID, type) {
 		DBHelper.findRoomsContainingUser(userID, function(rooms) {
-			msgAllRooms(rooms, msg, userID, type);
+      for (var i = 0; i < rooms.length; i++) {
+        io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID, type);
+      }
 		});
 	});
 	
