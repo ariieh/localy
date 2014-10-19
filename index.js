@@ -60,6 +60,16 @@ io.on('connection', function(socket) {
     });
   });
 
+  socket.on('leave room', function(roomname) {
+    DBHelper.findUserBySocketID(socket.id, function(user) {
+      DBHelper.findOrCreateRoom(roomname, function(room) {
+        DBHelper.leaveRoom(user.id, room.id, function(roomjoin) {
+          socket.leave(roomname);
+        });
+      });
+    });
+  });
+
   socket.on('hood message', function(msg, userID, hood) {
     io.sockets.in(hood).emit('chat message', msg, userID, hood);
   });
