@@ -168,6 +168,16 @@ button {
 	font-size: 16px;
 }
 
+.leaflet-popup-content {
+	.icon-comment {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 2px 3px 0 0;
+		color: #c3c3c3;
+	}
+}
+
 /* Legend box */
 #legend-box {
 	#chatroom, #user-count {

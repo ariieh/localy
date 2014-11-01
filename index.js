@@ -70,23 +70,31 @@ io.on('connection', function(socket) {
     });
   });
 
+  socket.on('individual message', function(msg, fromUserID, toUserID, options) {
+    io.to(toUserID).emit('chat message', 'individual', msg, fromUserID, toUserID + ":" + fromUserID, options);
+    io.to(fromUserID).emit('chat message', 'individual', msg, fromUserID, fromUserID + ":" + toUserID, options);
+  });
+
   socket.on('hood message', function(msg, userID, hood) {
-    io.sockets.in(hood).emit('chat message', msg, userID, hood);
+    io.sockets.in(hood).emit('chat message', 'hood', msg, userID, hood);
   });
 
 	socket.on('global message', function(msg, userID, type) {
 		DBHelper.findRoomsContainingUser(userID, function(rooms) {
       for (var i = 0; i < rooms.length; i++) {
-        io.sockets.in(rooms[i].roomname).emit('chat message', msg, userID, type);
+        io.sockets.in(rooms[i].roomname).emit('chat message', 'global', msg, userID, type);
       }
 		});
 	});
 	
-	socket.on('radius message', function(msg, userID, type, lat, lon) {
+	socket.on('radius message', function(msg, userID, type, options) {
+    var lat = options.lat;
+    var lon = options.lon;
+
 		DBHelper.findUsersInRadius(lat, lon, function(users) {
 			for (var i = 0; i < users.length; i++) {
 				var user = users[i];
-		  	io.to(user.socket_id).emit('chat message', msg, userID, type, lat, lon);
+		  	io.to(user.socket_id).emit('chat message', 'radius', msg, userID, type, options);
 			}
 	  });
 	});
