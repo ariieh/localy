@@ -5,41 +5,15 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'localy_development'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'postgresql'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'localy_staging'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'postgresql'
+      adapter : 'postgresql',
+      encoding : 'unicode',
+      pool : '5',
+      database : 'localy_development'
     }
   },
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'postgresql'
-    }
+    connection: process.env.DATABASE_URL
   }
-
 };
