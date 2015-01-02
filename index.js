@@ -1,6 +1,5 @@
 'use strict';
 
-// init projRequire
 require('./projRequire');
 
 /* Initialize server and sockets */
@@ -47,7 +46,7 @@ io.on('connection', function(socket) {
   			DBHelper.joinRoom(user.id, room.id, function(roomjoin) {
 					socket.join(placename);
 			    io.emit('load marker', user);
-					DBHelper.userCount(function(count) { io.emit('user count', count); });
+					DBHelper.activeUserCount(function(count) { io.emit('user count', count); });
   			});
   		});
   	});
@@ -104,10 +103,12 @@ io.on('connection', function(socket) {
 			
 	socket.on('disconnect', function(event) {
 		DBHelper.findUserBySocketID(socket.id, function(user) {
-      DBHelper.destroyUser(user, function(count) {
-        io.emit('user count', count);
-        io.emit('delete marker', socket.id);
-      });
+      if (user) {
+        DBHelper.deactivateUser(user, function(count) {
+          io.emit('user count', count);
+          io.emit('delete marker', socket.id);
+        });
+      }
     });
 	});
   

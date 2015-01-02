@@ -111,6 +111,7 @@ button {
 		float: right;
 		background: rgba(32, 32, 32, 0.3);
 		margin: 10px 0 0 10px;
+		cursor: pointer;
 
 		&.blue {
 			background: rgba(0, 95, 255, 0.4);
@@ -137,6 +138,7 @@ button {
 			top: -7px;
 			right: -6px;
 			color: rgba(32,32,32,0.7);
+			cursor: pointer;
 			@include transition(opacity,".11s","ease-in-out");
 
 			&:hover {
