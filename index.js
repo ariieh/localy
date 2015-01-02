@@ -77,8 +77,14 @@ io.on('connection', function(socket) {
     io.to(fromUserID).emit('chat message', 'individual', msg, fromUserID, fromUserID + ":" + toUserID, options);
   });
 
-  socket.on('hood message', function(msg, userID, hood) {
-    io.sockets.in(hood).emit('chat message', 'hood', msg, userID, hood);
+  socket.on('hood message', function(msg, socketID, hood) {
+    DBHelper.findUserBySocketID(socketID, function(user) {
+      DBHelper.findOrCreateRoom(hood, function(room){
+        DBHelper.createChat(msg, user.get("id"), room.get("id"), function(chat) {
+          io.sockets.in(hood).emit('chat message', 'hood', msg, socketID, hood);
+        });
+      });
+    });
   });
 
 	socket.on('global message', function(msg, userID, type) {
