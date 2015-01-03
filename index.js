@@ -69,7 +69,13 @@ io.on('connection', function(socket) {
     DBHelper.findOrCreateRoom(roomname, function(room) {
       DBHelper.getLatestChatsByRoom(room.get("id"), function(chats) {
         for (var i = 0; i < chats.length; i++) {
-          io.to(socket.id).emit('chat message', 'hood', chats[i].message, chats[i].socket_id, roomname);
+          var msg = chats[i].message;
+          var user_id = chats[i].user_id;
+          DB.Users.query({where: {id: user_id}}).fetchOne().then(function(user) {
+            var socketID = user.get("socket_id");
+            var username = user.get("username");
+            io.to(socket.id).emit('chat message', 'hood', msg, socketID, roomname, { username: username });
+          });
         }
       });
     });
@@ -93,7 +99,7 @@ io.on('connection', function(socket) {
   socket.on('hood message', function(msg, socketID, hood) {
     DBHelper.findUserBySocketID(socketID, function(user) {
       DBHelper.findOrCreateRoom(hood, function(room){
-        DBHelper.createChat(msg, user.get("id"), user.get("socket_id"), room.get("id"), function(chat) {
+        DBHelper.createChat(msg, user.get("id"), room.get("id"), function(chat) {
           io.sockets.in(hood).emit('chat message', 'hood', msg, socketID, hood);
         });
       });

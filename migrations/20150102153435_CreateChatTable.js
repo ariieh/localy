@@ -6,11 +6,9 @@ exports.up = function(knex, Promise) {
       table.text('message');
       table.integer('room_id');
       table.integer('user_id');
-      table.string('socket_id');
 
       table.index('room_id');
       table.index('user_id');
-      table.index('socket_id');
       table.timestamps();
     });
 };
