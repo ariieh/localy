@@ -25,14 +25,17 @@ var router = exports.router = require('./lib/server/router.js');
 /* Database */
 var pg = require('pg');
 
+// Clear out any users that were left as active
+DBHelper.deactiveAllActiveUsers();
+
 /* IO connections */
 io.on('connection', function(socket) {
   io.to(socket.id).emit('connected');
 	
 	socket.on('load map', function(userID) {
-		knex.select().table('users').then(function(users) {
-	    io.to(userID).emit('load map', users);
-		});
+    DBHelper.activeUsers(function(users) {
+      io.to(userID).emit('load map', users);
+    });
 	});
 
   socket.on('load marker', function(position, username, userID, placename) {
@@ -62,6 +65,16 @@ io.on('connection', function(socket) {
     });
   });
 
+  socket.on('get chats from room', function(roomname) {
+    DBHelper.findOrCreateRoom(roomname, function(room) {
+      DBHelper.getLatestChatsByRoom(room.get("id"), function(chats) {
+        for (var i = 0; i < chats.length; i++) {
+          io.to(socket.id).emit('chat message', 'hood', chats[i].message, chats[i].socket_id, roomname);
+        }
+      });
+    });
+  });
+
   socket.on('leave room', function(roomname) {
     DBHelper.findUserBySocketID(socket.id, function(user) {
       DBHelper.findOrCreateRoom(roomname, function(room) {
@@ -72,15 +85,15 @@ io.on('connection', function(socket) {
     });
   });
 
-  socket.on('individual message', function(msg, fromUserID, toUserID, options) {
-    io.to(toUserID).emit('chat message', 'individual', msg, fromUserID, toUserID + ":" + fromUserID, options);
-    io.to(fromUserID).emit('chat message', 'individual', msg, fromUserID, fromUserID + ":" + toUserID, options);
+  socket.on('individual message', function(msg, fromSocketID, toSocketID, options) {
+    io.to(toSocketID).emit('chat message', 'individual', msg, fromSocketID, toSocketID + ":" + fromSocketID, options);
+    io.to(fromSocketID).emit('chat message', 'individual', msg, fromSocketID, fromSocketID + ":" + toSocketID, options);
   });
 
   socket.on('hood message', function(msg, socketID, hood) {
     DBHelper.findUserBySocketID(socketID, function(user) {
       DBHelper.findOrCreateRoom(hood, function(room){
-        DBHelper.createChat(msg, user.get("id"), room.get("id"), function(chat) {
+        DBHelper.createChat(msg, user.get("id"), user.get("socket_id"), room.get("id"), function(chat) {
           io.sockets.in(hood).emit('chat message', 'hood', msg, socketID, hood);
         });
       });
