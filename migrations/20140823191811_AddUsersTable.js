@@ -14,7 +14,7 @@ exports.up = function(knex, Promise) {
     table.index('latitude');
     table.index('longitude');
     table.timestamps();
-  });  
+  });
 };
 
 exports.down = function(knex, Promise) {

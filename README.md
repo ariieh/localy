@@ -3,11 +3,8 @@
 Steps to get up and running:
 
 *   Install [Node.js](http://nodejs.org/download).
-*   Install [Socket.IO](http://socket.io/): `npm install socket.io`
-*   Install [Express.js](http://expressjs.com/): `npm install express`
-*   Install [Knex.js](http://knexjs.org/): `npm install knex`
-*   Install [Bookshelf.js](http://bookshelfjs.org/): `npm install bookshelf`
-*   Install and run [Postgres.app](http://postgresapp.com/).
+*   Navigate to the directory you've installed the app and install dependencies: `npm install`
+*   Install and run [Postgres.app](http://postgresapp.com/) if you're on a Mac.
 
 Then:
 
