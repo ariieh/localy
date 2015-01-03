@@ -24,7 +24,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'stylesheets/custom.css': 'stylesheets/custom.scss'
+          'lib/client/build/custom.css': 'stylesheets/custom.scss'
         }
       }
     }
