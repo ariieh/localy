@@ -25,11 +25,25 @@ var router = exports.router = require('./lib/server/router.js');
 /* Database */
 var pg = require('pg');
 
+/* Event routing */
+var eventRouter = require('socket.io-events')();
+io.use(eventRouter);
+
+/* Antispam */
+var antiSpam = require('./lib/server/anti_spam.js');
+
 // Clear out any users that were left as active
 DBHelper.deactiveAllActiveUsers();
 
 /* IO connections */
 io.on('connection', function(socket) {
+  antiSpam.spamAuthenticate(socket);
+
+  eventRouter.on("*", function(sock, args, next){
+    if (antiSpam.spamFunctionsToCheck.contains(args[0])) antiSpam.addSpam(socket);
+    next();
+  });
+
   io.to(socket.id).emit('connected');
 	
 	socket.on('load map', function(userID) {
