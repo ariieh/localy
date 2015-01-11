@@ -130,9 +130,9 @@ io.on('connection', function(socket) {
 
 	socket.on('global message', function(msg, userID, type) {
 		DBHelper.findRoomsContainingUser(userID, function(rooms) {
-      for (var i = 0; i < rooms.length; i++) {
+      lupus (0, rooms.length, function(i) {
         io.sockets.in(rooms[i].roomname).emit('chat message', 'global', msg, userID, type);
-      }
+      });
 		});
 	});
 	
@@ -140,11 +140,10 @@ io.on('connection', function(socket) {
     var lat = options.lat;
     var lon = options.lon;
 
-		DBHelper.findUsersInRadius(lat, lon, function(users) {
-			for (var i = 0; i < users.length; i++) {
-				var user = users[i];
-		  	io.to(user.socket_id).emit('chat message', 'radius', msg, userID, type, options);
-			}
+		DBHelper.findActiveUsersInRadius(lat, lon, function(users) {
+			lupus (0, users.length, function(i) {
+		  	io.to(users[i].socket_id).emit('chat message', 'radius', msg, userID, type, options);
+			});
 	  });
 	});
 			
