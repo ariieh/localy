@@ -32,6 +32,9 @@ io.use(eventRouter);
 /* Antispam */
 var antiSpam = require('./lib/server/anti_spam.js');
 
+/* Asynchronous looping */
+var lupus = require('lupus');
+
 // Clear out any users that were left as active
 DBHelper.deactiveAllActiveUsers();
 
@@ -82,7 +85,8 @@ io.on('connection', function(socket) {
   socket.on('get chats from room', function(roomname) {
     DBHelper.findOrCreateRoom(roomname, function(room) {
       DBHelper.getLatestChatsByRoom(room.get("id"), function(chats) {
-        for (var i = 0; i < chats.length; i++) {
+        lupus(0, chats.length, function(i) {
+          i = chats.length - 1 - i;
           var msg = chats[i].message;
           var user_id = chats[i].user_id;
           DB.Users.query({where: {id: user_id}}).fetchOne().then(function(user) {
@@ -90,7 +94,7 @@ io.on('connection', function(socket) {
             var username = user.get("username");
             io.to(socket.id).emit('chat message', 'hood', msg, socketID, roomname, { username: username });
           });
-        }
+        });
       });
     });
   });
