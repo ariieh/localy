@@ -8,6 +8,7 @@
     "knex": "^0.7.3",
     "lupus": "0.0.1",
     "pg": "latest",
+    "serve-favicon": "^2.2.0",
     "socket.io": "^1.2.1",
     "socket.io-events": "^0.4.6"
   },

@@ -35,6 +35,10 @@ var antiSpam = require('./lib/server/anti_spam.js');
 /* Asynchronous looping */
 var lupus = require('lupus');
 
+//Favicon
+var favicon = require('serve-favicon');
+app.use(favicon(__dirname + '/vendor/images/favicon.ico'));
+
 // Clear out any users that were left as active
 DBHelper.deactiveAllActiveUsers();
 
