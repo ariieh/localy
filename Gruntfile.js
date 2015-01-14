@@ -34,4 +34,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.registerTask('default', ['concat', 'sass']);
+  grunt.registerTask('heroku:production', ['concat', 'sass']);
 };
