@@ -117,19 +117,32 @@ button {
         &.active {
           display: block;
         }
+
+        li {
+          font-family: sans-serif;
+          font-weight: lighter;
+          font-size: 16px;
+
+          .username {
+            font-weight: bold;
+            color: #c0392b;
+          }
+
+          .timestamp {
+            display: none;
+            float: right;
+            padding-right: 150px;
+            @media (max-width: 700px) { display: none; }
+          }
+
+          &:hover {
+            .timestamp {
+              display: block;
+            }
+          }
+        }
       }
     }
-  }
-
-  .message, .username {
-    font-family: sans-serif;
-    font-weight: lighter;
-    font-size: 16px;
-  }
-
-  .username {
-    font-weight: bold;
-    color: #c0392b;
   }
 
   .chatroom-button {

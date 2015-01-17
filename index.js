@@ -16,6 +16,9 @@ var knex = exports.knex = DB.bookshelf.knex;
 /* Math */
 var MathLib = exports.MathLib = require('./lib/server/math.js');
 
+/* Date */
+var DateLib = exports.DateLib = require('./lib/server/date.js');
+
 /* DB helper functions */
 var DBHelper = exports.DBHelper = require('./lib/server/db_helper.js');
 
@@ -96,7 +99,10 @@ io.on('connection', function(socket) {
           DB.Users.query({where: {id: user_id}}).fetchOne().then(function(user) {
             var socketID = user.get("socket_id");
             var username = user.get("username");
-            io.to(socket.id).emit('chat message', 'hood', msg, socketID, roomname, { username: username });
+            var date = new Date(user.get("created_at"));
+            var timestamp = DateLib.formatTimestamp(date);
+
+            io.to(socket.id).emit('chat message', 'hood', msg, socketID, roomname, { username: username, timestamp: timestamp });
           });
         });
       });
