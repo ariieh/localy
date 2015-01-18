@@ -138,7 +138,11 @@ io.on('connection', function(socket) {
     DBHelper.findUserBySocketID(socketID, function(user) {
       DBHelper.findOrCreateRoom(hood, function(room){
         DBHelper.createChat(msg, user.get("id"), room.get("id"), function(chat) {
-          io.sockets.in(hood).emit('chat message', 'hood', msg, socketID, hood);
+          var username = user.get("username");
+          var date = new Date(user.get("created_at"));
+          var timestamp = DateLib.formatTimestamp(date);
+
+          io.sockets.in(hood).emit('chat message', 'hood', msg, socketID, hood, { username: username, timestamp: timestamp });
         });
       });
     });
