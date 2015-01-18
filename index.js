@@ -159,10 +159,8 @@ io.on('connection', function(socket) {
 	
 	socket.on('radius message', function(msg, userID, type, options) {
     msg = Helper.sanitizeMessage(msg);
-    var lat = options.lat;
-    var lon = options.lon;
 
-		DBHelper.findActiveUsersInRadius(lat, lon, function(users) {
+		DBHelper.findActiveUsersInRadius(options.lat, options.lon, function(users) {
 			lupus (0, users.length, function(i) {
 		  	io.to(users[i].socket_id).emit('chat message', 'radius', msg, userID, type, options);
 			});
