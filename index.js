@@ -19,6 +19,9 @@ var MathLib = exports.MathLib = require('./lib/server/math.js');
 /* Date */
 var DateLib = exports.DateLib = require('./lib/server/date.js');
 
+/* Misc helper */
+var Helper = exports.Helper = require('./lib/server/helper.js');
+
 /* DB helper functions */
 var DBHelper = exports.DBHelper = require('./lib/server/db_helper.js');
 
@@ -63,6 +66,8 @@ io.on('connection', function(socket) {
 	});
 
   socket.on('load marker', function(position, username, userID, placename) {
+    placename = Helper.sanitizeMessage(placename);
+    username = Helper.sanitizeMessage(username);
   	DBHelper.createUser({
 			username: username,
 			latitude: MathLib.degToRad(position[0]),
@@ -80,6 +85,7 @@ io.on('connection', function(socket) {
   });
 
   socket.on('join room', function(roomname) {
+    roomname = Helper.sanitizeMessage(roomname);
     DBHelper.findUserBySocketID(socket.id, function(user) {
       DBHelper.findOrCreateRoom(roomname, function(room) {
         DBHelper.joinRoom(user.id, room.id, function(roomjoin) {
@@ -90,6 +96,7 @@ io.on('connection', function(socket) {
   });
 
   socket.on('get chats from room', function(roomname) {
+    roomname = Helper.sanitizeMessage(roomname);
     DBHelper.findOrCreateRoom(roomname, function(room) {
       DBHelper.getLatestChatsByRoom(room.get("id"), function(chats) {
         lupus(0, chats.length, function(i) {
@@ -110,6 +117,7 @@ io.on('connection', function(socket) {
   });
 
   socket.on('leave room', function(roomname) {
+    roomname = Helper.sanitizeMessage(roomname);
     DBHelper.findUserBySocketID(socket.id, function(user) {
       DBHelper.findOrCreateRoom(roomname, function(room) {
         DBHelper.leaveRoom(user.id, room.id, function(roomjoin) {
@@ -120,11 +128,13 @@ io.on('connection', function(socket) {
   });
 
   socket.on('individual message', function(msg, fromSocketID, toSocketID, options) {
+    msg = Helper.sanitizeMessage(msg);
     io.to(toSocketID).emit('chat message', 'individual', msg, fromSocketID, toSocketID + ":" + fromSocketID, options);
     io.to(fromSocketID).emit('chat message', 'individual', msg, fromSocketID, fromSocketID + ":" + toSocketID, options);
   });
 
   socket.on('hood message', function(msg, socketID, hood) {
+    msg = Helper.sanitizeMessage(msg);
     DBHelper.findUserBySocketID(socketID, function(user) {
       DBHelper.findOrCreateRoom(hood, function(room){
         DBHelper.createChat(msg, user.get("id"), room.get("id"), function(chat) {
@@ -135,6 +145,7 @@ io.on('connection', function(socket) {
   });
 
 	socket.on('global message', function(msg, userID, type) {
+    msg = Helper.sanitizeMessage(msg);
 		DBHelper.findRoomsContainingUser(userID, function(rooms) {
       lupus (0, rooms.length, function(i) {
         io.sockets.in(rooms[i].roomname).emit('chat message', 'global', msg, userID, type);
@@ -143,6 +154,7 @@ io.on('connection', function(socket) {
 	});
 	
 	socket.on('radius message', function(msg, userID, type, options) {
+    msg = Helper.sanitizeMessage(msg);
     var lat = options.lat;
     var lon = options.lon;
 
